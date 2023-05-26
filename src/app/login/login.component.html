@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<!-- login content -->
+<div class="loginContent">
+    <!-- go back -->
+    <a href="#" id="gb">
+        <img src="../../assets/icons/arrow-left.svg" alt="">
+        Login
+    </a>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="login-form">
+        <div class="formGroup">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="@yourname" formControlName="username">
+        </div>
+        <div class="formGroup">
+            <label for="password">Password</label>
+            <input name="password" [type]="hidePassword ? 'password' : 'text'" id="password" formControlName="password">
+            <div class="visibilityToggler" (click)="hidePassword = !hidePassword">
+                <!-- eye close -->
+                <img src="../../assets/icons/password_eye_open.svg" alt="" srcset="">
+                <!-- eye open -->
+            </div>
+        </div>
+        <input type="submit" value="Login">
+    </form>
+    <div class="link_row">
+        <a routerLink="/onboard">Create Account</a>
+        <a href="#">Reset Password</a>
+    </div>
+</div>
+<app-footer></app-footer>

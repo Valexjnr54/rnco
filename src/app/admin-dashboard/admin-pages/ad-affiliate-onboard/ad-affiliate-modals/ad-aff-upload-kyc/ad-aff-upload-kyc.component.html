@@ -1,0 +1,48 @@
+<div class="affUploadKyc">
+    <div class="uploadKycContent">
+        <div class="step_indicator">
+            <div class="SI_box">1</div>
+            <div class="SI_box">2</div>
+            <div class="SI_box">3</div>
+        </div>
+        <div class="form">
+        <div class="UK_intro">
+            <p id="up">Upload KYC</p>
+            <div class="notification">
+                <img src="../../../assets/icons/caution.svg" alt="" srcset="">
+                <p class="regMerchant">Accepted national means of identification and business registration documents are required.</p>
+            </div>
+        </div>
+        <div class="UK_con">
+            <div class="personal_docs">
+                <p>Personal Documents</p>
+                <div class="document_row">
+                    <div class="form_group">
+                        <p>Document Type</p>
+                        <select name="personalDocType" id="personalDocType" #personDoc="ngModel" [(ngModel)]="personalDocType">
+                            <option value="">Select a document Type</option>
+                            <option value="DRIVERS_LICENSE">Drivers License</option>
+                            <option value="NIN">National ID</option>
+                            <option value="VOTERS_ID">Voters ID</option>
+                        </select>
+                          <small *ngIf="(personDoc.touched || personDoc.dirty) && !personDoc.valid">
+                            <small *ngIf="personDoc.required"> select from the option above</small>
+                          </small>
+                    </div>
+                    <div class="form_group">
+                        <p>Document Number</p>
+                        <input type="text" name="personalDocNo" id="personalDocNo" placeholder="Enter Document Number" #docNo="ngModel" [(ngModel)]="personalDocNo" required>
+                        <small *ngIf="(docNo.touched || docNo.dirty) && !docNo.valid">
+                            <small *ngIf="docNo.required"> select from the option above</small>
+                          </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="doneUploading" (click)="uploadPersonalFiles('fourth_step')">Next</button>
+<!--        <button class="cancelUpload">Cancel</button>-->
+    </div>
+    </div>
+</div>
+
+

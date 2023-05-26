@@ -1,0 +1,23 @@
+<div class="ptCard">
+    <div class="ptImgBox">
+        <img class="productImg" [src]="Image" alt="">
+    </div>
+    <div class="ptcardCon">
+        <!-- <p class="merchantName">{{Products['merchantName']}}</p> -->
+        <p class="productName">{{Products['productName']}}</p>
+        <p class="productPrice">&#x20A6;{{Products['unitPrice']}}</p>
+        <p class="productStock">{{Products['quantity']}} IN STOCK</p>
+    </div>
+    <a *ngIf="fromAffiliate == false" class="productBtn" [routerLink]="['/admin/product']" [queryParams]="{id: Products['id']}">View Product</a>
+    <a *ngIf="fromAffiliate == true" 
+        class="productBtn" 
+        [routerLink]="['/admin/productCampaign']" 
+        [queryParams]="{
+            productId: Products['id'],
+            affiliateId: affiliateId,
+            affiliateName: affiliateName
+            }"
+        >
+        View Product
+    </a>
+</div>

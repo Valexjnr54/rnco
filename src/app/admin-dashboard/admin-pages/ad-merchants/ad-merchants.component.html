@@ -1,0 +1,72 @@
+<div class="dashboard">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-admin-side-bar (showLogOutModal)="logOutModalToggle($event)"></app-admin-side-bar>
+        <div class="dashboard_content">
+            <h4 class="intro">Overview</h4>
+            <div class="topTab">
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_cube.svg" alt="">
+                    <p id="title">All Merchants</p>
+                    <p id="amount">{{this.allMerchants.length}}</p>
+                </div>
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                    <p id="title">Active Merchants</p>
+                    <p id="amount">{{this.activeMerchants.length}}</p>
+                </div>
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_pending.svg" alt="">
+                    <p id="title">Inactive Merchants</p>
+                    <p id="amount">{{this.inactiveMerchants.length}}</p>
+                </div>
+                <div class="tpbox" [routerLink]="['/admin/merchantOnboard']">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_new.svg" alt="">
+                    <p>New Merchant</p>
+                </div>
+            </div>
+            <div class="merchants_table">
+                <p class="merIntro">All Merchants</p>
+                <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Merchant Name</th>
+                            <th>Business Name</th>
+                            <th>Phone Number</th>      
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of allMerchants; let i = index" [id]="item.id" (click)="getMerchant(item.id, item['activated'])" >
+                            <td>{{i+1}}</td>
+                            <td id="table_name">
+                                <p>{{item.firstName}} {{item.middleName == null ? '': item.middleName}} {{item.lastName}}</p>
+                                <small>{{item.email}}</small>
+                            </td>
+                            <td id="table_business">
+                                <p>{{item.businessName == null ? 'N/A': item.businessName}}</p>
+                                <small>{{item.address == null ? 'N/A': item.address.street + ', ' + item.address.city + ', ' +  item.address.lga + ', ' + item.address.state}}</small>
+                            </td>
+                            <td>{{item.phoneNumber}}</td>
+                            <!-- if statement to show active -->
+                            <ng-template [ngIf]="item['activated']">
+                                <td>Active</td>
+                            </ng-template>
+                            <ng-template [ngIf]="!item['activated']">
+                                <td>Inactive</td>
+                            </ng-template>
+                            <td id="actionBox">
+                                <!-- action btn -->
+                                <img src="../../assets/icons//Dashboard_icons/more_vertical.svg" alt="" srcset="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

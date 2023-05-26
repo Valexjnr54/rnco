@@ -1,0 +1,52 @@
+<app-dashboard-navbar></app-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-dashboard-sidebar>
+    <main class="dashboard_content">
+        <h4 class="intro">Campaigns</h4>
+        <div class="ptTab">
+            <div class="ptBox">
+                <img id="ptIcon" src="../../../../assets/icons/Dashboard_icons/alt_cube.svg" alt="">
+                <p id="title">Active Campaigns</p>
+                <p id="amount">{{ActiveCampaigns.length}}</p>
+            </div>
+            <div class="ptBox">
+                <img id="ptIcon" src="../../../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                <p id="title">Leading Campaigns</p>
+                <p id="amount">{{LeadingCampaigns.length}}</p>
+            </div>
+            <div class="ptBox">
+                <img id="ptIcon" src="../../../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                <p id="title">Estimated Payouts</p>
+                <p id="amount">&#8358; {{EstimatedFunds}}</p>
+            </div>
+        </div>
+        <div class="productTab">
+            <p class="ptTitle">Active Campaigns</p>
+            <div class="ptGrid">
+                <!-- campaign cards -->
+                <div class="ptCard" *ngFor="let item of productsItems">
+                    <div class="ptImgBox">
+                        <p class="stock">{{item['quantity']}} in stock</p>
+                        <img class="productImg" [src]="item['imageUrl']" alt="">
+                    </div>
+                    <div class="ptcardCon">
+                        <p class="productCategory">
+                            <img src="../../../../assets/icons/Dashboard_icons/rocket.svg" alt="">
+                            {{item['category']}}
+                        </p>
+                        <p class="productName">{{item['productName']}}</p>
+                        <p class="productPrice">
+                            <span>&#x20A6;</span> {{item['unitPrice']}}
+                            <span *ngIf="!item['rate'] == null && item['rate'] >= 0" id="comm">{{item['rate']}} %</span>
+                            <span *ngIf="item['rate'] == null && item['amountPerConversion'] > 0" id="comm">(&#x20A6; {{item['amountPerConversion']}}) comm.</span>
+                        </p>
+                        <small>Campaign count: {{item['campaignCount']}}</small> <br>
+                        <!-- <small>Commission: </small> -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

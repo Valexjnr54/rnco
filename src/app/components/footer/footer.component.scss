@@ -1,0 +1,85 @@
+footer{
+    background-color: #131825;
+    color: #fff;
+    width: 100%;
+    height: 60vh;
+    .ft_content{
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        display: grid;
+        gap: 10%;
+        grid-template-columns: 30% 1fr;
+        justify-content: space-between;
+        align-items: center;
+        .ft_talk{
+            h3{
+                font-family: 'Open Sans', sans-serif;
+                width: 70%;
+            }
+            p{
+                margin: 16px 0px;
+                font-size: 14px;
+            }
+            p#top_text{
+                width: 75%;
+            }
+            .social_links{
+                display: flex;
+                gap: 8px;
+            }
+        }
+        .ft_links{
+            display: grid;
+            grid-template-columns: 50% 1fr 1fr ;
+            gap: 5%;
+            div{
+                .ft_link_header{
+                    margin: 16px 0;
+                    font-style: italic;
+                }
+                .ft_link_content{
+                    display: flex;
+                    flex-direction: column;
+                    a{
+                        text-decoration: none;
+                        color: #fff;
+                        margin: 8px 0;
+                        font-size: 14px;
+                    }
+                    p{
+                        margin: 8px 0;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    // Mobile Responsiveness
+    @media only screen and (max-width: 768px){
+        height: auto;
+        .ft_content{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            padding: 1.5rem 0px;
+            .ft_talk{
+                h3{
+                    width: 70%;
+                    margin: 0 auto;
+                }
+                p#top_text{
+                    width: 100%;
+                }
+                .social_links{
+                    justify-content: center;
+                }
+            }
+            .ft_links{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}

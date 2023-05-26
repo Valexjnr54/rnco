@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<!-- Login Content -->
+<section class="loginContent">
+    <div class="topper">
+        <img routerLink="/home" src="../../assets/icons/arrow-left.svg" alt="">
+        <p>Get Started as:</p>
+    </div>
+    <div class="lwLinks">
+        <a [routerLink]="['/affiliateOnboard']" class="lwAff">
+            <h3 class="lwHead">An Affiliate</h3>
+            <p class="lwBody">Join thousands of affiliate marketers who are earning extra income by promoting top quality offers to millions of customers all around the world.</p>
+        </a>
+        <a [routerLink]="['/merchantOnboard']" class="lwMer">
+            <h3 class="lwHead">A Merchant</h3>
+            <p class="lwBody">Whether you’re looking to start or expand your business reach, RNCo can connect you with thousands of passionate affiliates.</p>
+        </a>
+    </div>
+</section>
+<app-footer></app-footer>

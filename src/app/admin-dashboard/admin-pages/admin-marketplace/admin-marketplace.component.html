@@ -1,0 +1,22 @@
+<div class="dashboard">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-admin-side-bar (showLogOutModal)="logOutModalToggle($event)"></app-admin-side-bar>
+        <div class="dashboard_content">
+            <div class="topRow">
+                <p class="mer">
+                    <img [routerLink]="['/admin/dashboard']" src="../../../../assets/icons/Dashboard_icons/dash_arrow_left.svg" alt="">
+                    Market
+                </p>
+                <p class="affiliateIndicator" *ngIf="fromAffiliate">
+                    Affliate | {{affiliateName}}
+                </p>
+            </div>
+            <div class="market_grid">   
+                <app-admin-marketplace-card *ngFor="let item of products" [affiliateName]="affiliateName" [affiliateId]="affiliateId"  [fromAffiliate]="fromAffiliate"  [Products]="item"></app-admin-marketplace-card>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

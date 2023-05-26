@@ -1,0 +1,114 @@
+<div class="overlay" *ngIf="joinCampaign == true">
+    <div class="campaignSuccess">
+        <div class="topSect">
+            <p id="init">
+                <img src="../../../../assets/icons/arrow-left.svg" alt="" (click)="this.joinCampaign = false">
+                Join Campaign
+            </p>
+            <p class="affiliateName">Affiliate</p>
+        </div>
+        <div class="productContent">
+            <div class="product_img_gallery">
+                <img [src]="indexImage" alt="" srcset="" class="main_img">
+                <div class="small_img_row">
+                    <img *ngFor="let image of imageUrls" [src]="image" alt="" class="subImg">
+                </div>
+            </div>
+            <div class="product_specification">
+                <div class="ps_top">
+                    <p id="product_name">{{productDetails['productName']}}</p>
+                    <p id="price">&#8358; {{productDetails['unitPrice']}}</p>
+                </div>
+                <div class="specs_grid">
+                    <div class="spec_box">
+                        <p class="spec_title">Delivery Period</p>
+                        <p class="productSpec">{{productDetails['deliveryDuration']}} {{productDetails['deliveryPeriod']}} (s)</p>
+                    </div>
+                    <div class="spec_box">
+                        <p class="spec_title">Number in Stock</p>
+                        <p class="productSpec">{{productDetails['quantity']}}</p>
+                    </div>
+                    <div class="spec_box">
+                        <p class="spec_title">Commission</p>
+                        <p class="productSpec">&#8358; {{productDetails['productPayoutConfig'].amountPerConversion}}</p>
+                    </div>
+                </div>
+                <div class="qrArea">
+                    <p id="notice">Download QR Code or Copy Shareable Link</p>
+                    <div class="qrImgArea">
+                        <img src="../../../../assets/icons/Dashboard_icons/test_qr.png" alt="" class="qr">
+                        <button class="downloadQr">Download Qr code</button>
+                    </div>
+                    <div class="linkholder">
+                        <p class="shortLink" (click)="copyUrl()">
+                            {{qrShortLink}} 
+                            <img src="../../../../assets/icons/Dashboard_icons/copyqr.svg"  alt="" id="copyQr">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="done" (click)="joinCampaign = false">Done</button>
+    </div>
+</div>
+<app-aff-dashboard-navbar></app-aff-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-aff-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-aff-dashboard-sidebar>
+    <div class="product_content">
+        <div class="product_content_top">
+            <div class="product_img_gallery">
+                <img [src]="indexImage" alt="" srcset="" class="main_img">
+                <div class="small_img_row">
+                    <img *ngFor="let image of imageUrls" [src]="image" alt="" class="subImg">
+                </div>
+            </div>
+            <div class="product_specification">
+                <div class="ps_top">
+                    <p id="product_name">{{productDetails['productName']}}</p>
+                    <p id="location">{{productDetails['merchant'].businessName}}</p>
+<!--                    <p id="state">Lagos</p>-->
+                    <p id="price">&#8358; {{productDetails['unitPrice']}}</p>
+                </div>
+                <div class="specs_grid">
+<!--                    <div class="spec_box">-->
+<!--&lt;!&ndash;                        <p class="spec_title">Brand Name</p>&ndash;&gt;-->
+<!--                        <p class="productSpec">{{productDetails['brandName']}}</p>-->
+<!--                    </div>-->
+                    <div class="spec_box">
+                        <p class="spec_title">Category</p>
+                        <p class="productSpec">{{productDetails['category']}}</p>
+                    </div>
+                    <div class="spec_box">
+                        <p class="spec_title">Delivery Period</p>
+                        <p class="productSpec">{{productDetails['deliveryDuration']}} {{productDetails['deliveryPeriod']}} (s)</p>
+                    </div>
+                    <div class="spec_box">
+                        <p class="spec_title">Number in Stock</p>
+                        <p class="productSpec">{{productDetails['quantity']}}</p>
+                    </div>
+                    <div class="spec_box">
+                        <p class="spec_title">Commission</p>
+                        <p class="productSpec">&#8358; {{productDetails['productPayoutConfig'].percent == true ? (productDetails['unitPrice'] * productDetails['productPayoutConfig'].rate / 100) : productDetails['productPayoutConfig'].amountPerConversion}}</p>
+                    </div>
+                </div>
+                <div class="button_row">
+                    <button (click)="addToCampaign()" class="add">Join Campaign</button>
+                </div>
+            </div>
+        </div>
+        <div class="product_content_bottom">
+            <div class="product_description">
+                <p class="pdTitle">Product Description</p>
+                <p>{{productDetails['description']}}</p>
+            </div>
+            <div class="product_addons">
+                <p class="paTitle">Delivery Options</p>
+                <p>
+                    <span>{{productDetails['deliveryOption']=="DOOR_DELIVERY" ? "Door Delivery" : "Pick Up"}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+

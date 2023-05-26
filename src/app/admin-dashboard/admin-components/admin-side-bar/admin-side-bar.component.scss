@@ -1,0 +1,132 @@
+.dashboard_sidebar{
+    width: 100%;
+    height: 80vh;
+    border-radius: 16px;
+    background: #1A66CD;
+    .dsContent{
+        width: 75%;
+        height: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: #fff;
+        a{
+            margin: 8px 0px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            img{
+                margin-right: 4px;
+            }
+        }
+        .active{
+            background: rgba(255, 255, 255, 0.16);
+            padding: 8px 4px;
+            border-radius: 8px;
+        }
+        .topContent{
+            display: flex;
+            flex-direction: column;
+            margin-top: 16px;
+            a:first-of-type{
+                font-weight: 600;
+            }
+        }
+        .tip{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width:768px) {
+    .dashboard_sidebar__close{
+        z-index:999;
+        position:absolute !important;
+        width:40% !important;
+        
+        background: #1A66CD;
+    }
+    .dashboard_sidebar{
+       display: none;
+    }
+    .dashboard_sidebar__close{
+       display: none;
+    }
+
+    .dashboard_sidebar .dsContent .topContent {
+        display: flex;
+        flex-direction: column;
+        margin-top: 16px;
+        align-items: flex-end;
+        gap: 1.3rem;
+        color: #404040;
+    }
+
+    .dashboard_sidebar .dsContent a, .dashboard_sidebar .dsContent .btn-logout {
+        margin: 8px 0px;
+        display: flex;
+        align-items: center;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        color: #404040;
+        cursor: pointer;
+        letter-spacing: -0.02em;
+        line-height: 19px;
+    }
+
+    .dashboard_sidebar .dsContent .topContent img {
+        display: none;
+    }
+
+    .dashboard_sidebar .dsContent a:first-of-type {
+        justify-content: flex-end;
+    }
+    .dashboard_sidebar .dsContent a:first-of-type img{
+        display: none;
+    }
+
+    .dashboard_sidebar {
+        width: 60%;
+        height: 100vh;
+        border-radius: 16px;
+        background: #EAEBEB;
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0%;
+        transition: all .5s ease-in-out;
+    }
+
+    .dashboard_sidebar.active {
+        left: 0%;
+    }
+
+  .dashboard_sidebar .dsContent .btn-logout:last-of-type {
+        justify-content: center;
+        background: #DC5436;
+        padding: .5rem;
+        gap: .5rem;
+        border-radius: 8px;
+        color: #fff;
+    }
+
+    .dashboard_sidebar .dsContent .btn-logout img{
+        display: none;
+    }
+
+    .dashboard_sidebar .dsContent .topContent .tip {
+        display: flex;
+    }
+    .dashboard_sidebar .dsContent .topContent .tip img{
+        width: 60px;
+        height: 60px;
+
+    }
+}

@@ -1,0 +1,71 @@
+<div class="dashboard">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-admin-side-bar (showLogOutModal)="logOutModalToggle($event)"></app-admin-side-bar>
+        <div class="dashboard_content">
+            <h4 class="intro">Conversion Reports</h4>
+            <div class="topTab">
+                <div class="tpbox" [class.active]="chosen == 'product'" (click)="selectChosen('product')">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_cube.svg" alt="">
+                    <p id="title">Products</p>
+                    <p id="amount">42</p>
+                </div>
+                <div class="tpbox" [class.active]="chosen == 'merchant'" (click)="selectChosen('merchant')">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                    <p id="title">Merchants</p>
+                    <p id="amount">42</p>
+                </div>
+                <div class="tpbox" [class.active]="chosen == 'affiliate'" (click)="selectChosen('affiliate')">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_pending.svg" alt="">
+                    <p id="title">Affiliates</p>
+                    <p id="amount">42</p>
+                </div>
+            </div>
+            <div class="merchants_table">
+                <p class="merIntro">All Merchants</p>
+                <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th>Icon</th>
+                            <th>Merchant Name</th>
+                            <th>Business Name</th>
+                            <th>Phone Number</th>
+                            <th>Channel</th>
+                            <th>Payment Type</th>
+                            <th>Provider</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <!-- <tbody>
+                        <tr *ngFor="let item of allMerchants; let i = index" [id]="item.id" (click)="getMerchant(item.id)" >
+                            <td></td>
+                            <td id="table_name">
+                                <p>{{item.firstName}} {{item.lastName}}</p>
+                                <small>{{item.email}}</small>
+                            </td>
+                            <td id="table_business">
+                                <p>{{item.businessName}}</p>
+                                <small>lagos</small>
+                            </td>
+                            <td>+{{item.phoneNumber}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td *ngIf="item.subscribed == true">Active</td> -->
+                            <!-- <td *ngIf="item.subscribed == false">Inactive</td> -->
+                            <!-- <td>{{}}</td> -->
+                            <!-- <td id="actionBox">
+                                action btn
+                                <img src="../../assets/icons//Dashboard_icons/more_vertical.svg" alt="" srcset=""> -->
+
+                            <!-- </td> -->
+                        <!-- </tr> -->
+                    <!-- </tbody> --> 
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

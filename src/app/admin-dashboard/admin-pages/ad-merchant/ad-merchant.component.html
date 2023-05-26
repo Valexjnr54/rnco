@@ -1,0 +1,87 @@
+ <div class="dashboard">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-admin-side-bar (showLogOutModal)="logOutModalToggle($event)"></app-admin-side-bar>
+        <div class="dashboard_content">
+            <div class="topHolder">
+                <div class="top_intro">
+                    <div class="top_row">
+                        <div class="merchant_intro">
+                            <img src="https://picsum.photos/200/300" alt="" srcset="">
+                            <div class="merDetail">
+                                <p class="merchantName">{{merchant?.firstName == null ? 'N/A': merchant.firstName}} {{merchant?.lastName == null ? 'N/A' : merchant.lastName}}</p>
+                                <small>@{{merchant.login}}</small>
+                            </div>
+                        </div>
+                        <p class="state" *ngIf="merchant.activated">
+                            Active
+                        </p>
+                        <p class="stateless" *ngIf="!merchant.activated">
+                            Inactive
+                        </p>
+                    </div>
+                    <div class="userDetailGrid">
+                        <div class="userDetail">
+                            <small class="title">Business Name</small>
+                            <p class="user">{{merchant?.businessName == null ? 'N/A' : merchant.businessName}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Business Address</small>
+                            <p class="user">
+                                {{merchantAddress?.street == null ? 'N/A' : merchantAddress.street}},
+                                {{merchantAddress?.city == null ? 'N/A' : merchantAddress.city}},
+                                {{merchantAddress?.state == null ? 'N/A' : merchantAddress.state }}
+                            </p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">State</small>
+                            <p class="user">{{merchantAddress?.state == null ? 'N/A': merchantAddress.state}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Email Address</small>
+                            <p class="user">{{merchant?.email == null ? 'N/A' : merchant.email}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Phone Number</small>
+                            <p class="user">+ {{merchant?.phoneNumber == null ? 'N/A' : merchant.phoneNumber}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Channel</small>
+                            <p class="user">{{merchantConfig?.channel == null ? 'N/A': merchantConfig.channel}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Payment Type</small>
+                            <p class="user">{{merchantConfig?.payment == null ? 'N/A' : merchantConfig.payment}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Provider</small>
+                            <p class="user">{{merchantConfig?.payoutProvider == null ? 'N/A' : merchantConfig.payoutProvider}}</p>
+                        </div>
+                    </div>
+                    <div class="btn_row">
+                        <button [routerLink]="['/admin/editMerchant']" [queryParams]="{id: stringId}">Edit Merchant Profile</button>
+                        <button [routerLink]="['/admin/addProduct']" [queryParams]="{id:stringId}">Add Product</button>
+                        <button id="moreAct" (click)="toTrue($event)" >
+                            More Actions
+                            <div class="moreActions" [class]="{show: collapased == true}">
+                                <a (click)="toFalse($event)">Collapse</a>
+                                <a href="#">Suspend Merchant Account</a>
+                                <a href="#">Delete Merchant Account</a>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="productTab">
+                <p class="ptTitle">All Products</p>
+                <div class="ptGrid">
+                    <!-- Loop through to get user products -->
+                    <!-- Placeholder data -->
+                    <app-admin-product-card *ngFor="let product of products" [Products]="product"></app-admin-product-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

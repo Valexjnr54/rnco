@@ -1,0 +1,39 @@
+
+    <aside class="dashboard_sidebar" [class.dashboard_sidebar__close]="(isClosed$ | async)">
+    <div class="dsContent">
+        <div class="topContent">
+            <div class="tip">
+                <img src="https://picsum.photos/200/300" alt="">
+                <h2>Menu</h2>
+            </div>
+            <a [routerLink]="['/merchant/dashboard']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_dashboard.svg" alt="">
+                Dashboard
+            </a>
+            <a [routerLink]="['/merchant/products']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_products.svg" alt="">
+                Products
+            </a>
+            <a [routerLink]="['/merchant/campaign']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_campaigns.svg" alt="">
+                Campaigns
+            </a>
+            <a [routerLink]="['/merchant/market']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_shop.svg" alt="">
+                Marketplace
+            </a>
+        </div>
+        <div class="bottomContent">
+            <a [routerLink]="['/merchant/settings']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_setting.svg" alt="">
+                Settings
+            </a>
+            <a class="btn-logout" (click)="showLogOut()">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_setting.svg" alt="">
+                Logout
+            </a>
+        </div>
+        
+    </div>
+</aside>
+

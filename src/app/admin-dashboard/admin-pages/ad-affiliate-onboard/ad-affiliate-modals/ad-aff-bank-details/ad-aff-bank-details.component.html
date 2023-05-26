@@ -1,0 +1,59 @@
+<div class="add-bank-account">
+    <form class="aba-content">
+        <div class="step_indicator">
+            <div class="SI_box">1</div>
+            <div class="SI_box">2</div>
+            <div class="SI_box">3</div>
+        </div>
+        <div class="aba_intro">
+            <p id="up">Add Bank Account</p>
+            <div class="notification">
+                <img src="../../../assets/icons/caution.svg" alt="" srcset="">
+                <p class="regMerchant">Please ensure that the account you provide matches with the name provided</p>
+            </div>
+        </div>
+        <div class="input_container">
+            <div class="form-group">
+                <label for="accountNumber">Account Number</label>
+                <input type="text" name="accountNumber" id="accountNumber" class="accountNumber" placeholder="Enter Account Number" #acctNo="ngModel" [(ngModel)]="accountNumber" required>
+                 <small *ngIf="(acctNo.touched || acctNo.dirty) && !acctNo.valid">
+                    <small *ngIf="acctNo.required">Account Number is required</small>
+                 </small>
+                 
+            </div>
+            <div class="form-group">
+                <label for="financialInstitution">Financial Institution</label>
+                <select name="financialInstitution" id="financialInstitution" (change)="getCode()" #banks="ngModel" [(ngModel)]="financialInstitution" required>
+                    <option value="">Select Financial Institution</option>
+                    <option *ngFor="let bank of bankDetails" [value]="bank.name">{{bank.name}}</option>
+                </select>
+                 <small *ngIf="(banks.touched || banks.dirty) && !banks.valid">
+                   <small *ngIf="banks.required">Financial Institution is required</small>
+                </small>
+                
+            </div>
+            <div class="form-group">
+                <label for="accountType">Account Type</label>
+                <select name="accountType" id="accountType" #acctType="ngModel"  [(ngModel)]="accountType" required>
+                    <option value="">Select Account Type</option>
+                    <option value="SAVINGS">Savings</option>
+                    <option value="CURRENT">Current</option>
+                </select>
+                
+                <small *ngIf="(acctType.touched || acctType.dirty) && !acctType.valid">
+                   <small *ngIf="acctType.required">Account Type is required</small>
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="accountName">Account Name</label>
+                <input type="text" name="accountName" id="accountName" value="{{accountName}}" [(ngModel)]="accountName" class="disabled" disabled>
+            </div>
+        </div>
+        <div class="btn_row">
+            <button (click)="submitDetails('fifth_step')" class="submit">Done</button>
+<!--            <button (click)="goBack" class="cancel">Cancel</button>-->
+        </div>
+    </form>
+</div>
+
+

@@ -1,0 +1,12 @@
+node_modules/*
+.eslintcache
+build/*
+.idea
+.vscode
+npm-debug.log
+.sass-cache
+.DS_Store
+.start.pid
+.port.tmp
+public
+.angular/cache

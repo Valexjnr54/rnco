@@ -1,0 +1,51 @@
+.registration-complete{
+    width: 100%;
+    .reg-com-con{
+        width: 25vw;
+        padding: 1.5rem 5rem;
+        background-color: #fff;
+        border-radius: 8px;
+        text-align: center;
+        p{
+            margin: 1rem 0px;
+        }
+        p.rcc-intro{
+            color: #404040;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        img{
+            width: 64px;
+            height: 64px;
+        }
+        .rcc-title{
+            color: #404040;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        p.nText{
+            font-size: 14px;
+            font-weight: normal;
+        }
+        button{
+            width: 100%;
+            padding: 10px 0px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 4px;
+            background-color: #074DAD;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            &:hover{
+                color: #fff;
+                background-color: #1A66CD;
+            }
+            &:focus{
+                background-color: #708aaf;
+            }
+        }
+    }
+
+}

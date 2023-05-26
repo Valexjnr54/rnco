@@ -1,0 +1,47 @@
+.fs-con{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .fs-content{
+        width: 35%;
+        padding: 1.5rem 5rem;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 8px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .fsTitle{
+            font-size: 18px;
+            font-weight: 600;
+        }
+        img.rnco_logo{
+            width: 64px;
+            height: 64px;
+            margin: 0.5rem 0px;
+        }
+        .fsNotice{
+            font-size: 14px;
+        }
+        .fsLinkOut{
+            text-decoration: none;
+            color: #1A66CD;
+            border: 1px solid #1A66CD;
+            border-radius: 8px;
+            padding: 4px 0px;
+            width: 100%;
+            margin: 1rem 0px;
+            font-weight: 600;
+            cursor: pointer;
+            &:hover{
+                color: #fff;
+                background-color: #1A66CD;
+            }
+            &:focus{
+                background-color: #708aaf;
+            }
+        }
+    }
+}

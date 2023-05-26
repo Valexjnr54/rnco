@@ -1,0 +1,14 @@
+<div class="ptCard">
+    <div class="ptImgBox">
+        <!-- <img class="productImg" *ngFor="let image of Products['productImages'];let i = index" ngIf="i == 0" [src]="image.imageUrl" alt=""> -->
+        <img class="productImg" [src]="Image" alt="">
+        <!-- =============== -->
+    </div>
+    <div class="ptcardCon">
+        <p class="productName">{{Products['productName']}}</p>
+        <p class="productPrice">&#x20A6;{{Products['unitPrice']}}</p>
+        <p class="productStock">{{Products['quantity']}} IN STOCK</p>
+        <p class="productStock">Campaign Count: {{Products['campaignCount']}}</p>
+    </div>
+    <a [routerLink]="['/affiliate/affiliateProduct']" [queryParams]="{id: Products['id']}" class="productBtn">View Product</a>
+</div>

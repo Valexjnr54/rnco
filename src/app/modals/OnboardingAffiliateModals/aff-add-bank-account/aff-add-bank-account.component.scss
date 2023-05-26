@@ -1,0 +1,124 @@
+.add-bank-account{
+    width: 100%;
+    small{
+        color: red;
+    }
+    .aba-content{
+        width: 45vw;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        border-radius: 8px;
+        .step_indicator{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            .SI_box{
+                border-radius: 4px 18px 18px 4px;
+                padding: 8px 0px;
+                background: hsla(0, 0%, 85%, 0.4);
+                font-weight: 600;
+                width: 25%;
+                text-align: center;
+            }
+            .SI_box:nth-of-type(2){
+                color: #fff;
+                background: #074DAD;
+            }
+        }
+        .aba_intro{
+            margin-top: 1.5rem;
+            p#up{
+                font-weight: 700;
+                color: rgba(64, 64, 64, 0.6);
+                font-size: 16px;
+            }
+            .notification{
+                display: flex;
+                justify-content: flex-start;
+                padding: 8px 4px;
+                background: #E1EAF5;
+                align-items: center;
+                border-radius: 4px;
+                margin: 4px 0px;
+                p{
+                    font-size: 12px;
+                    color: #074DAD;
+                    margin-left: 4px;
+                    font-weight: 600;
+                }
+            }
+        }
+        .input_container{
+            margin: 8px 0px;
+            p{
+                font-size: 14px;
+                font-weight: 600;
+                color: rgba(64, 64, 64, 0.6);
+            }
+            .form-group{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin: 8px 0px;
+                label{
+                    color: #404040;
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+                input,select{
+                    padding: 8px 2%;
+                    margin: 4px 0px;
+                    border-radius: 4px;
+                    border: 0.5px solid #4040409c;
+                    outline: none;
+                }
+                input.disabled{
+                    background: rgba(64, 64, 64, 0.08);
+                    border: none;
+                    padding: 10px 2%;
+                    font-weight: light;
+                }
+            }
+        }
+        .btn_row{
+            width: 80%;
+            align-self: center;
+            justify-self: center;
+            margin: 1rem 0px;
+            .submit{
+                width: 100%;
+                padding: 10px 0;
+                border-radius: 4px;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                font-weight: 600;
+                color: #fff;
+                background-color: #074DAD;
+                cursor: pointer;
+                &:hover{
+                    color: #fff;
+                    background-color: #1A66CD;
+                }
+                &:focus{
+                    background-color: #618fce;
+                }
+            }
+            .cancel{
+                margin-top: 4px;
+                width: 100%;
+                padding: 10px 0;
+                border-radius: 4px;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                font-weight: 600;
+                background-color: #fff;
+                color: #074DAD;
+            }
+        }
+    }
+}

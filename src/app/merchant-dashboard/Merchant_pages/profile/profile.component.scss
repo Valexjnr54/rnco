@@ -1,0 +1,108 @@
+.dashboard_container{
+    .profile::-webkit-scrollbar {
+        width: 5px;
+    }
+    .profile::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    .profile::-webkit-scrollbar-thumb {
+        background: #888; 
+        border-radius:10px;
+    }
+    .profile::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+    .profile{
+        padding: 0px 1rem;
+        max-height: 85vh;
+        overflow-y: scroll;
+        width: 85%;
+        margin: 0 auto;
+        color: #3D5059;
+        overflow-x: hidden;
+        p.intro{
+            font-size: 16px;
+            font-weight: 600;
+            color: #B9B9B9;
+            margin-bottom: 1rem;
+        }
+        .current_user{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            a.editProfile{
+                width: fit-content;
+                height: fit-content;
+                padding: 8px 12px;
+                text-decoration: none;
+                color: #1A66CD;
+                font-weight: 600;
+                border-radius: 8px;
+                border: 1px solid #1A66CD;
+                cursor: pointer;
+            }
+            .user_id{
+                display: flex;
+                align-items: center;
+                .profileImage{
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 50%;
+                }
+                .user_details{
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 8px;
+                    .username{
+                        font-size: 16px;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+                        img{
+                            margin-left: 4px;
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+                    .userTag{
+                        color: #B9B9B9;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .profile_box{
+            width: 100%;
+            border: 1px solid #B9B9B9;
+            border-radius: 16px;
+            padding: 1rem 0px;
+            margin: 1.5rem 0px;
+            .pb_intro{
+                font-size: 14px;
+                font-weight: bold;
+                color: #B9B9B9;
+                width: 90%;
+                margin: 0 auto;
+            }
+            .pb_content{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto;
+                row-gap: 1rem;
+                width: 90%;
+                margin: 0 auto;
+                .pbc_hold{
+                    .pb_title{
+                        font-weight: 400;
+                        color: #B9B9B9;
+                        font-size: 14px;
+                    }
+                    .pb_user{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

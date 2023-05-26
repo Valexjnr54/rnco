@@ -1,0 +1,50 @@
+<div class="add-bank-account">
+    <form class="aba-content" [formGroup]="affBankForm" #form="ngForm">
+       <app-step-indicator></app-step-indicator>
+        <div class="aba_intro">
+            <p id="up">Add Bank Account</p>
+            <div class="notification">
+                <img src="../../../assets/icons/caution.svg" alt="" srcset="">
+                <p class="regMerchant">Please ensure that the account you provide matches with the name provided</p>
+            </div>
+        </div>
+        <div class="input_container">
+            <div class="form-group">
+                <label for="accountNumber">Account Number</label>
+                <input type="text" name="accountNumber" id="accountNumber" class="accountNumber" #acctNo="ngModel"  placeholder="Enter Account Number" [(ngModel)]="accountNumber">
+                <small *ngIf="(acctNo.dirty || acctNo.touched || form.submitted) && !affBankForm.controls.userName.valid">
+                    Account Number field is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="financialInstitution">Financial Institution</label>
+                <select name="financialInstitution" id="financialInstitution" (change)="getCode()" [(ngModel)]="financialInstitution">
+                    <option value="">Select Financial Institution</option>
+                    <option *ngFor="let bank of bankDetails" [value]="bank.name">{{bank.name}}</option>
+                </select>
+                <small *ngIf="(affBankForm.controls.financialInstitution.touched || form.submitted) && !affBankForm.controls.financialInstitution.valid">
+                    Account Number field is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="accountType">Account Type</label>
+                <select name="accountType" id="accountType"  [(ngModel)]="accountType">
+                    <option value="">Select Account Type</option>
+                    <option value="SAVINGS">Savings</option>
+                    <option value="CURRENT">Current</option>
+                </select>
+                <small *ngIf="(affBankForm.controls.accountType.touched || form.submitted) && !affBankForm.controls.accountType.valid">
+                    Account Type field is required
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="accountName">Account Name</label>
+                <input type="text" name="accountName" id="accountName" value="{{accountName}}" [(ngModel)]="accountName" class="disabled" disabled>
+            </div>
+        </div>
+        <div class="btn_row">
+            <button (click)="submitDetails('sixth_step')" class="submit">Done</button>
+        </div>
+    </form>
+</div>
+

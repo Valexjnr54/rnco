@@ -1,0 +1,22 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <div class="email-con">
+        <div class="ec-content">
+            <p class="ecTitle">Confirm Your Email Address</p>
+            <img src="../../../assets/icons/mail-confirm-icon.svg" alt="" class="ecMailIcon">
+            <p class="ecNotice">
+                We’ve sent a confirmation email to {{email}} 
+                Please check your inbox or you spam and click on the link 
+                in the mail to confirm your email address.
+            </p>
+            <div class="btn_row">
+                <a class="resendConEmail" (click)="resendLink()">
+                    Resend Confirmation Email
+                </a>
+                <a href="" class="useAnotherEmail">
+                    Use another Email Address
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

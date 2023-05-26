@@ -1,0 +1,51 @@
+.editPersonal{
+ display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(5, auto);
+        justify-content: space-between;
+        row-gap: 16px;
+        column-gap: 2.5%;
+        .phoneFg{
+            div{
+                display: grid;
+                grid-template-columns: 15% 1fr;
+                column-gap: 1rem;
+                width: 100%;
+            }
+        }
+      .formGroup{
+            display: flex;
+            flex-direction: column;
+            label{
+                font-weight: 600;
+            }
+            input,select{
+                width: 95%;
+                padding: 10px 0px 10px 10px;
+                margin: 4px 0px;
+                border-radius: 4px;
+                border: 0.5px solid hsl(0, 0%, 75%);
+                outline: none;
+            }
+            select{
+                width: 98%;
+            }
+            input:disabled, select:disabled{
+                cursor: not-allowed;
+            }
+        }
+
+         .formWholeLength{
+            grid-column: 1/-1;
+            width: 99%;
+            color: #fff;
+            background: hsla(215, 92%, 35%, 1);
+            padding: 10px 0px;
+            border-radius: 6px;
+            outline: none;
+            border: none;
+            text-align: center;
+            font-weight: 600;
+        }
+    
+}

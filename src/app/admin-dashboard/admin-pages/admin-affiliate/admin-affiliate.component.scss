@@ -1,0 +1,214 @@
+@import url('../../admin-style.scss');
+.dashboard{
+    .dashboard_container{
+        .dashboard_content::-webkit-scrollbar {
+            width: 5px;
+        }
+        .dashboard_content::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .dashboard_content::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius:10px;
+        }
+        .dashboard_content::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+        .dashboard_content{
+            width: 95%;
+            margin: 0 auto;
+            padding: 0.5rem;
+            color: #3D5059;
+            max-height: 85vh;
+            overflow-y: scroll;
+            .topHolder{
+                .top_intro{
+                    background: #FFFFFF;
+                    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
+                    border-radius: 12px;
+                    padding: 1rem 0px;
+                    .top_row{
+                        width: 95%;
+                        margin: 0 auto;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 0 auto;
+                        .merchant_intro{
+                            display: flex;
+                            align-items: center;
+                            img{
+                                width: 58px;
+                                height: 58px;
+                                border-radius: 50%;
+                            }
+                            .merDetail{
+                                margin-left: 8px;
+                                .merchantName{
+                                    font-weight: 600;
+                                    color: hsla(199, 19%, 29%, 1);
+                                }
+                            }
+                        }
+                        .state{
+                            width: fit-content;
+                            height: fit-content;
+                            padding: 8px 12px;
+                            border-radius: 8px;
+                            color: #10AB8F;
+                            // if user Active
+                            background: hsla(169, 83%, 37%, 0.12);
+                            font-size: 14px;
+                            font-weight: 600;
+                        }
+                    }
+                    .userDetailGrid{
+                        width: 95%;
+                        margin: 0 auto;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-rows: auto;
+                        column-gap: 5%;
+                        row-gap: 0.5rem;
+                        .userDetail{
+                            // small.title{
+                            //     font-weight: 600;
+                            //     font-size: 14px;
+                            // }
+                            p.user{
+                                font-weight: 600;
+                                font-size: 14px;
+                            }  
+                        }
+                    }
+                    .btn_row{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        width: 95%;
+                        margin: 1rem auto;
+                        button, a{
+                            width: 28%;
+                            text-align: center;
+                            padding: 10px 0px;
+                            border-radius: 8px;
+                            outline: none;
+                            border: none;
+                        }
+                    }
+                }
+            }
+            .productTab{
+                background-color: #fff;
+                box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.24);
+                border-radius: 16px;
+                padding: 0.5rem 0px;
+                margin: 1rem 0px;
+                .ptTitle{
+                    width: 95%;
+                    margin: 1rem auto;
+                    color: rgba(80, 80, 80, 0.4);
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+                .ptGrid{
+                    width: 95%;
+                    margin: auto;
+                    display: grid;
+                    grid-template-columns: repeat(4, 22.5%);
+                    justify-content: space-around;
+                    row-gap: 1rem;
+                }
+            }
+            .active_product_table{
+                background-color: #fff;
+                box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.24);
+                border-radius: 16px;
+                padding: 1rem 0px;
+                width: 100%;
+                margin: 1.5rem 0px;
+                .intro_tab{
+                    width: 95%;
+                    margin: 1rem auto;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    p{
+                        color: rgba(80, 80, 80, 0.4);
+                        font-weight: 700;
+                        font-size: 14px;
+                    }
+                    button{
+                        font-size: 12px;
+                        font-weight: 600;
+                        border: 1px solid #1A66CD;
+                        color: #1A66CD;
+                        padding: 4px 8px;
+                        border-radius: 4px;
+                    }
+                }
+                table{
+                    position: relative;
+                    overflow-x: scroll;
+                    font-size: 12px;
+                    width: 95%;
+                    margin: 0px auto;
+                    thead{
+                        tr{
+                            text-align: left;
+                            text-transform: capitalize;
+                            th{
+                                padding: 8px 0px;
+                            }
+                        }
+                    }
+                    tbody{
+                        tr{
+                            display: relative;
+                            td{
+                                padding: 8px 0px
+                            }
+                            td:nth-of-type(1),td:nth-of-type(3),td:nth-of-type(6),td:nth-of-type(7),td:nth-of-type(8){
+                                text-align: center;
+                            }
+                            td:nth-of-type(1){
+                                font-weight: bold;
+                            }
+                            td.actionBox{
+                                cursor: pointer;
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                            .getlink{
+                                position: absolute;
+                                background-color: #fff;
+                                width: fit-content;
+                                z-index: 2;
+                                cursor: pointer;
+                                font-weight: 600;
+                                padding: 4px 8px;
+                                border: 0.5px solid #3D5059;
+                                border-radius: 4px;
+
+                            }
+                        }
+                        tr:nth-of-type(odd){
+                            background: #F8F8F8;;
+                        }
+    
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .dashboard .dashboard_container .dashboard_content .topHolder .top_intro {
+        padding: 1rem 0px;
+        box-shadow: none !important;
+    }
+}

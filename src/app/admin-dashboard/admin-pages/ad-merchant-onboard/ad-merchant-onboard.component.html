@@ -1,0 +1,45 @@
+<div class="dashboard">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-admin-side-bar (showLogOutModal)="logOutModalToggle($event)"></app-admin-side-bar>
+        <div class="dashboard_content">
+            <h4 class="intro">Overview</h4>
+            <div class="topTab">
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_cube.svg" alt="">
+                    <p id="title">All Merchants</p>
+                    <p id="amount">42</p>
+                </div>
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                    <p id="title">Active Merchants</p>
+                    <p id="amount">42</p>
+                </div>
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_pending.svg" alt="">
+                    <p id="title">Suspended Merchants</p>
+                    <p id="amount">42</p>
+                </div>
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_new.svg" alt="">
+                    <p>New Merchant</p>
+                </div>
+            </div>
+            <!-- Onboarding holder -->
+            <div class="onboarding">
+                <p class="onb">Create New Merchant</p>
+                <div class="onboard_holder">
+                    <!-- step checker-->
+                    <app-ad-personal (passDetails)="assignDetails($event)" (toNextStage)="valueFromChild($event)" *ngIf="Step.first_step"></app-ad-personal>
+                    <app-ad-business (isOnboardingReg)="isRegistered($event)" [userId]="UserObject['userId']" (toNextStageSecond)="valueFromChild($event)" *ngIf="Step.second_step"></app-ad-business>
+                    <app-ad-upload-kyc [isBusinessRegistered]="onboardingAReg" [userId]="UserObject['userId']" (toNextStageThird)="valueFromChild($event)" *ngIf="Step.third_step"></app-ad-upload-kyc>
+                    <app-ad-bank-details (toNextStageFourth)="valueFromChild($event)" [user]="UserObject" *ngIf="Step.fourth_step"></app-ad-bank-details>
+                    <app-ad-registration-payment (toNextStageFifth)="valueFromChild($event)" *ngIf="Step.fifth_step"></app-ad-registration-payment>
+                    <app-ad-registration-complete (completeRegistration)="finalStep()" *ngIf="Step.sixth_step"></app-ad-registration-complete>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

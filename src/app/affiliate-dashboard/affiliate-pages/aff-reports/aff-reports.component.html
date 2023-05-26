@@ -1,0 +1,51 @@
+<app-aff-dashboard-navbar></app-aff-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-aff-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-aff-dashboard-sidebar>
+    <div class="dashboard_content">
+        <h4 class="into">Overview</h4>
+        <div class="topTab">
+            <div class="tpbox">
+                <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_new.svg" alt="">
+                <p>Reports</p>
+            </div>
+        </div>
+        <div class="active_product_table">
+            <div class="intro_tab">
+                <p>ACTIVE CAMPAIGNS</p>
+                <button [routerLink]="['/affiliate/affiliateMarket']" >View Marketplace</button>
+            </div>
+            <!-- full state -->
+            <!-- state shows if user has active campaigns -->
+            <table class="table-auto">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Product Name</th>
+                        <th>UnitPrice</th>
+                        <th>Affiliate</th>
+                        <th>Customer Id</th>
+                        <th>Channel</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of reports, let i = index">
+                        <td>{{ i+1 }}</td>
+                        <td>{{item['prodName']}}</td>
+                        <td> {{item['unitPrice']}}</td>
+                        <td>{{item['affName']}}</td>
+                        <td>{{item['customerId']}}</td>
+                        <td>
+                            {{item['channel']}}
+                        </td>
+                        <td>{{item['status']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+             <!--Empty state  -->
+             <!-- State shows for users with no active campaigns -->
+        </div>
+    </div>
+</div>
+

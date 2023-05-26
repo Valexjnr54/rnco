@@ -1,0 +1,54 @@
+
+.linkBack{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #404040;
+    margin-bottom: 1rem;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: none;;
+}
+.edProfile_content{
+    width: 100%;
+    background: #FAFAFA;
+    border-radius: 16px;
+    padding: 1.5rem 0px;
+    .badge_row{
+        width: 70%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        p{
+            width: fit-content;
+            padding: 8px 16px;
+            color: #1A66CD;
+            border: 1px solid #1A66CD;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 8px 0px;
+        }
+        p.active{
+            background-color: #1A66CD;
+            color: #fff;
+            font-weight: 600;
+        }
+    }
+    .toggleHolder{
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:768px){
+    .edProfile_content .badge_row {
+        gap: 0.3rem;
+    }
+}
+
+@media screen and (max-width:500px){
+    .edProfile_content .badge_row {
+        gap: 0.3rem;
+    }
+}

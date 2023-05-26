@@ -1,0 +1,146 @@
+.dashboard_container{
+    .dashboard_content::-webkit-scrollbar {
+        width: 5px;
+    }
+    .dashboard_content::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    .dashboard_content::-webkit-scrollbar-thumb {
+        background: #888; 
+        border-radius:10px;
+    }
+    .dashboard_content::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+    .dashboard_content{
+        padding: 0px 1rem;
+        max-height: 85vh;
+        overflow-y: scroll;
+        h4.into{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #B9B9B9;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .topTab{
+            display: grid;
+            grid-template-columns: repeat( 4, 1fr);
+            column-gap: 1rem;
+            .tpbox{
+                display: flex;
+                flex-direction: column;
+                background: #EFF6FF;
+                padding: 1rem;
+                border-radius: 16px;
+                color: hsla(215, 77%, 45%, 1);
+                img#tpIcon{
+                    padding: 8px;
+                    border-radius: 50%;
+                    background: hsla(215, 78%, 93%, 1);
+                    width: 16px;
+                    height: 16px;
+                    margin: 0.5rem 0px;
+                }
+                p#title{
+                    font-size: 14px;
+                    font-weight: 700;
+                    margin: 4px 0px
+                }
+                p#amount{
+                    font-size: 14px;
+                }  
+            }
+            .tpbox:first-of-type{
+                background-color: #1A66CD;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+                img#tpIcon{
+                    background: hsla(0, 0%, 100%, 0.2);
+                }
+                p{
+                    font-weight: 700;
+                    font-size: 14px;
+                    margin: 8px 0px;
+                    color: #fff;
+                }
+            }
+        }
+        .active_product_table{
+            background-color: #fff;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.24);
+            border-radius: 16px;
+            padding: 1rem 0px;
+            width: 100%;
+            margin: 1.5rem 0px;
+            .intro_tab{
+                width: 95%;
+                margin: 1rem auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                p{
+                    color: rgba(80, 80, 80, 0.4);
+                    font-weight: 700;
+                    font-size: 14px;
+                }
+                button{
+                    font-size: 12px;
+                    font-weight: 600;
+                    border: 1px solid #1A66CD;
+                    color: #1A66CD;
+                    padding: 8px 8px;
+                    background-color: #fff;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    &:hover{
+                        background-color: #1A66CD;
+                        color: #fff;
+                    }
+                }
+            }
+            table{
+                position: relative;
+                overflow-x: scroll;
+                font-size: 12px;
+                width: 95%;
+                margin: 0px auto;
+                thead{
+                    tr{
+                        text-align: left;
+                        text-transform: capitalize;
+                        th{
+                            padding: 8px 0px;
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            padding: 8px 0px
+                        }
+                        td:nth-of-type(1),td:nth-of-type(3),td:nth-of-type(6),td:nth-of-type(7),td:nth-of-type(8){
+                            text-align: center;
+                        }
+                        td:nth-of-type(1){
+                            font-weight: bold;
+                        }
+                        td#actionBox{
+                            cursor: pointer;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                    tr:nth-of-type(odd){
+                        background: #F8F8F8;;
+                    }
+    
+                }
+            }
+        }
+    }
+}

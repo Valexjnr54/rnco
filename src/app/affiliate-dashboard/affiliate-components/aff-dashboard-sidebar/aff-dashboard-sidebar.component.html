@@ -1,0 +1,29 @@
+<aside class="affDashboard_sidebar" [class.dashboard_sidebar__close]="(isClosed$ | async)">
+    <div class="dsContent">
+        <div class="topContent">
+            <a [routerLink]="['/affiliate/affiliateDashboard']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_dashboard.svg" alt="">
+                Dashboard
+            </a>
+            <a [routerLink]="['/affiliate/affiliateCampaign']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_campaigns.svg" alt="">
+                Campaigns
+            </a>
+            <a [routerLink]="['/affiliate/affiliateMarket']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_shop.svg" alt="">
+                Marketplace
+            </a>
+        </div>
+        <div class="bottomContent">
+            <a [routerLink]="['/affiliate/settings']" routerLinkActive="active">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_setting.svg" alt="">
+                Settings
+            </a>
+            <a class="btn-logout" (click)="showLogOut()">
+                <img src="../../../../assets/icons/Dashboard_icons/ic_setting.svg" alt="">
+                Logout
+            </a>
+        </div>
+    </div>
+</aside>
+

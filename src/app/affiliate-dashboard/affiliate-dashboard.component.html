@@ -1,0 +1,14 @@
+<div class="siteNotif" *ngIf="userNew">
+     <app-affiliate-welcome (toNextStage)="valueFromChild($event)" *ngIf="Step.first_step"></app-affiliate-welcome>
+    <app-aff-business (toNextStageSecond)="valueFromChild($event)" *ngIf="Step.second_step"></app-aff-business>
+    <app-aff-few-steps (toNextStageThird)="valueFromChild($event)" *ngIf="Step.third_step"></app-aff-few-steps>
+    <app-aff-upload-kyc (toNextStageFourth)="valueFromChild($event)" *ngIf="Step.fourth_step"></app-aff-upload-kyc>
+    <app-aff-add-bank-account (toNextStageFifth)="valueFromChild($event)" *ngIf="Step.fifth_step"></app-aff-add-bank-account>
+    <app-aff-registration-payment (toNextStageSixth)="valueFromChild($event)" *ngIf="Step.sixth_step"></app-aff-registration-payment>
+    <app-aff-registraton-complete (completeRegistration)="finalStep()" *ngIf="Step.seventh_step"></app-aff-registraton-complete>
+
+</div>
+<div class="dashboard_wrapper">
+    <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

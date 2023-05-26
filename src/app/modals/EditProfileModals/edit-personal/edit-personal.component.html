@@ -1,0 +1,57 @@
+<form class="editPersonal" #form="ngForm" [formGroup]="personalForm">
+    <div class="userDetails">
+         <input type="text" name="id" id="id" [(ngModel)]="User['id']" hidden/>
+        <div class="formGroup">
+            <label for="businessName">First Name</label>
+            <input type="text" name="firstName" id="firstName" #fname="ngModel" [(ngModel)]="User['firstName']"/>
+            <div *ngIf="(fname.dirty || fname.touched || form.submitted) && !fname.valid">
+                <small *ngIf="fname.required">First Name field is required</small>
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="businessName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" #lname="ngModel" [(ngModel)]="User['lastName']"/>
+            <div *ngIf="(lname.dirty || lname.touched || form.submitted) && !lname.valid">
+                <small *ngIf="lname.required">Last Name field is required</small>
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="businessName">Middle Name(optional)</label>
+            <input type="text" name="middleName" [(ngModel)]="middleName" placeholder="Middle Name" />
+        </div>
+        <div class="formGroup">
+            <label for="businessName">Username</label>
+            <input type="text" name="userName" #username="ngModel" [(ngModel)]="User['userName']"/>
+            <div *ngIf="(username.dirty || username.touched || form.submitted) && !username.valid">
+                <small *ngIf="username.required">Username field is required</small>
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="businessName">Gender</label>
+            <select name="gender" id="" #sex="ngModel" [(ngModel)]="User['gender']" disabled>
+                <option value="">Please select Gender</option>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+            </select>
+            <div *ngIf="(sex.dirty || sex.touched || form.submitted) && !sex.valid">
+                <small *ngIf="sex.required">select from the above option</small>
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="businessName">Language</label>
+            <input type="text" name="language" value="English" disabled id="businessName"/>
+        </div>
+        <div class="formGroup">
+            <label for="businessName">Email Address</label>
+            <input type="email" name="email" [(ngModel)]="User['email']" disabled />
+        </div>
+        <div class="formGroup">
+            <label for="businessName">Phone Number</label>
+            <input type="text" name="phoneno" #phone="ngModel" [(ngModel)]="User['phoneNumber']"/>
+            <div *ngIf="(phone.dirty || phone.touched || form.submitted) && !phone.valid">
+                <small *ngIf="phone.required">Phone Number field is required</small>
+            </div>
+        </div>
+        <button (click)="submitForm()" class="formWholeLength">Save Changes</button>
+    </div>
+</form>

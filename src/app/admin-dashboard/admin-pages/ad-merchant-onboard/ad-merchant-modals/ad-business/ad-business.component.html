@@ -1,0 +1,151 @@
+                            <div class="businessDetails">
+    <div class="bdtopper">
+        <p>Business Information</p>
+    </div>
+    <form [formGroup]="businessForm" (ngSubmit)="validateForm('third_step')" #form="ngForm" novalidate>
+        <div class="formGroup">
+            <label for="businessName">Business Name</label>
+            <input type="text" name="businessName" id="businessName" [(ngModel)]="businessName" #bname="ngModel"  required>
+            <small *ngIf="(bname.dirty ||bname.touched || form.submitted) && !bname.valid">
+                <small *ngIf="bname.required">Business Name is required</small>
+            </small>
+        </div>
+        <div class="formGroup">
+            <label for="streetAddress">Street Address</label>
+            <input type="text" name="street" id="street" placeholder="Enter Street Address" #streets="ngModel"  [(ngModel)]="street" required>
+            <small *ngIf="(streets.dirty || streets.touched || form.submitted) && !businessForm.controls.street.valid">
+                <small *ngIf="streets.required">Street Address is required</small>
+            </small>
+        </div>
+        <div class="formGroup">
+            <label for="country">Country</label>
+            <input type="text" name="country" id="country" value="Nigeria"  [(ngModel)]="country" disabled>
+        </div>
+        <div class="formGroup">
+            <label for="state">State</label>
+            <input type="text" name="state" id="state" value="Edo state"  disabled [(ngModel)]="state">
+        </div>
+        <div class="formGroup">
+            <label for="lga">Local Government Area</label>
+            <select name="lga" id="lga" aria-placeholder="select LGA" [(ngModel)]="lga" #local="ngModel" required>
+                <option value="Akoko-Edo">Akoko-Edo</option>
+                <option value="Egor">Egor</option>
+                <option value="Esan Central">Esan Central</option> 
+                <option value="Esan North-East">Esan North-East</option>
+                <option value="Esan South-East">Esan South-East</option>
+                <option value="Esan West">Esan West</option>
+                <option value="Etsako Central">Etsako Central</option>
+                <option value="Etsako East">Etsako East</option>
+                <option value="Etsako West">Etsako West</option>
+                <option value="Igueben">Igueben</option>
+                <option value="Ikpoba-Okha">Ikpoba-Okha</option>
+                <option value="Oredo" selected>Oredo</option>
+                <option value="Orhionmwon">Orhionmwon</option>
+                <option value="Ovia North-East">Ovia North-East</option>
+                <option value="Ovia South-West">Ovia South-West</option>
+                <option value="Owan East">Owan East</option>
+                <option value="Owan West">Owan West</option>
+                <option value="Uhunmwonde">Uhunmwonde</option>
+            </select>
+            <small *ngIf="(local.dirty || local.touched || form.submitted) && !local.valid">
+                <small *ngIf="local.required">Select from the above</small>
+            </small>
+        </div>
+        <div class="formGroup">
+            <label for="city">City</label>
+            <select name="city" id="city"  [(ngModel)]="city" #cities="ngModel" required>
+                <option value="Agbede">Agbede</option>
+                <option value="Agenebode">Agenebode</option>
+                <option value="Auchi">Auchi</option>
+                <option value="Benin City" selected>Benin City</option>
+                <option value="Egor">Egor</option>
+                <option value="Ekpoma">Ekpoma</option>
+                <option value="Emokweme">Emokweme</option>
+                <option value="Esan Central">Esan Central</option>
+                <option value="Esan North-East">Esan North-East</option>
+                <option value="Esan West">Esan West</option>
+                <option value="Eso">Eso</option>
+                <option value="Ewohimi">Ewohimi</option>
+                <option value="Ewu">Ewu</option>
+                <option value="Gelegele">Gelegele</option>
+                <option value="Ibillo">Ibillo</option>
+                <option value="Ibore">Ibore</option>
+                <option value="Idoa">Idoa</option>
+                <option value="Igarra">Igarra</option>
+                <option value="Igbanke">Igbanke</option>
+                <option value="Iguododo">Iguododo</option>
+                <option value="Ihievbe">Ihievbe</option>
+                <option value="Ikara">Ikara</option>
+                <option value="Imiekuri">Imiekuri</option>
+                <option value="Irrua">Irrua</option>
+                <option value="Iyamho">Iyamho</option>
+                <option value="Jattu">Jattu</option>
+                <option value="Lampese">Lampese</option>
+                <option value="Obadan">Obadan</option>
+                <option value="Ogwa">Ogwa</option>
+                <option value="Okpekpe">Okpekpe</option>
+                <option value="Okpella">Okpella</option>
+                <option value="Ososo">Ososo</option>
+                <option value="Owan East">Owan East</option>
+                <option value="Somorika">Somorika</option>
+                <option value="Ubiaja">Ubiaja</option>
+                <option value="Ugbokhare">Ugbokhare</option>
+                <option value="Ughoton">Ughoton</option>
+                <option value="Uhogua">Uhogua</option>
+                <option value="Ujiogba">Ujiogba</option>
+                <option value="Unuamen">Unuamen</option>
+                <option value="Unuedegor">Unuedegor</option>
+                <option value="Uokha">Uokha</option>
+                <option value="Uromi">Uromi</option>
+                <option value="Usonigbe">Usonigbe</option>
+                <option value="Uzebba">Uzebba</option>
+            </select>
+           <small *ngIf="(cities.dirty || cities.touched || form.submitted) && !cities.valid">
+              <small *ngIf="cities.required">City field is required</small>
+           </small>
+        </div>
+        <div class="formGroup">
+            <label for="web">Website (Optional)</label>
+            <input type="text" name="website" id="website"  placeholder="yourbusinessname.com" [(ngModel)]="website">
+        </div>
+        <div class="formGroup">
+            <label for="channel">Channel</label>
+            <input type="text" name="channel" id="channel"  value="WhatsApp" disabled [(ngModel)]="channel">
+        </div>
+        <div class="formGroup">
+            <label for="payment">Payment</label>
+            <input type="text" name="payment" id="payment"  value="External" disabled [(ngModel)]="payment">
+        </div>
+        <div class="formGroup">
+            <label for="payout">Channel</label>
+            <input type="text" name="payoutProvider" id="payoutProvider"  value="Paystack" disabled [(ngModel)]="payoutProvider">
+        </div>
+
+        <div class="formGroup">
+            <label for="bizType">Business Type</label>
+            <select name="city" id="bizType"  [(ngModel)]="bizType" #bizTypes="ngModel" required>
+                <option value="registered">Registered Business</option>
+                <option value="unregistered">UnRegistered Business</option>
+            </select>
+            <small *ngIf="(bizTypes.dirty || bizTypes.touched || form.submitted) && !bizTypes.valid">
+                <small *ngIf="bizTypes.required">Business Type is required</small>
+            </small>
+        </div>
+
+
+<!--        <div class="formGroup">-->
+<!--            <label for="businessType">Business Type</label>-->
+<!--            <select name="businessType" id="businessType"  #regBuss="ngModel" [(ngModel)]="businessType" required>-->
+<!--                <option value="registered">Registered Business</option>-->
+<!--                <option value="unregistered">UnRegistered Business</option>-->
+<!--            </select>-->
+<!--            <small *ngIf="(regBuss.dirty ||regBuss.touched || form.submitted) && !regBuss.valid">-->
+<!--                <small *ngIf="regBuss.required">Select from the above option</small>-->
+<!--            </small>-->
+<!--        </div>-->
+        <div class="formWholeLength">
+            <button type="submit">Next</button>
+        </div>
+    </form>
+</div>
+

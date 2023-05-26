@@ -1,0 +1,84 @@
+<app-dashboard-navbar></app-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-dashboard-sidebar>
+    <div class="profile">
+        <p class="intro">Profile</p>
+        <div class="current_user">
+            <div class="user_id">
+                <img class="profileImage" src="https://picsum.photos/200/300" alt="">
+                <div class="user_details">
+                    <p class="username">{{user['lastName'] === null ? 'N/A': user['lastName']}} {{user['firstName']? 'N/A':user['firstName']}} <img src="../../../../assets/icons/Dashboard_icons/verified_badge.png" alt=""></p>
+                    <p class="userTag">@{{user['login']}}</p>
+                </div>
+            </div>
+            <a [routerLink]="['/merchant/editProfile']" class="editProfile">Edit Profile</a>
+        </div>
+        <div class="profile_box">
+            <p class="pb_intro">PERSONAL INFORMATION</p>
+            <div class="pb_content">
+                <div class="pbc_hold">
+                    <p class="pb_title">Email Address</p>
+                    <p class="pb_user">{{user['email'] === null ? 'N/A': user['email']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Phone Number</p>
+                    <p class="pb_user">+ {{user['phoneNumber'] === null ? 'N/A' : user['phoneNumber']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Gender</p>
+                    <p class="pb_user">{{user['gender'] || 'Male'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="profile_box">
+            <p class="pb_intro">BUSINESS INFORMATION</p>
+            <div class="pb_content">
+                <div class="pbc_hold">
+                    <p class="pb_title">Business Name</p>
+                    <p class="pb_user">{{user['businessName'] === null ? 'N/A' : user['businessName']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Business Address</p>
+                    <p class="pb_user">
+                        {{userAddress['street']}} <br>
+                        {{userAddress['state']}}, {{userAddress['country'] === null ? 'N/A' : userAddress['country']}} 
+                    </p>
+                </div> 
+                <div class="pbc_hold">
+                    <p class="pb_title">Business Website</p>
+                    <p class="pb_user">{{user['website'] === null ? 'N/A' : user['website']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Channel</p>
+                    <p class="pb_user">{{user['merchantConfig'].channel === null ? 'N/A' : user['merchantConfig'].channel}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Payment Type</p>
+                    <p class="pb_user">{{user['merchantConfig'].payment === null ? 'N/A' : user['merchantConfig'].channel}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Payout Provider</p>
+                    <p class="pb_user">{{user['merchantConfig'].payoutProvider === null ?  'N/A' : user['merchantConfig'].channel}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="profile_box">
+            <p class="pb_intro">ACCOUNT INFORMATION</p>
+            <div class="pb_content">
+                <div class="pbc_hold">
+                    <p class="pb_title">Account Number</p>
+                    <p class="pb_user">{{userBank['accountNo'] === null ? 'N/A' : userBank['accountNo']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Financial Institution</p>
+                    <p class="pb_user">{{userBank['bankName'] === null ? 'N/A' : userBank['bankName']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Account Name</p>
+                    <p class="pb_user">{{userBank['lastName']}} {{userBank['firstName']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

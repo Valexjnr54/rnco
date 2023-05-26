@@ -1,0 +1,111 @@
+
+<div class="dashboard">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-admin-side-bar (showLogOutModal)="logOutModalToggle($event)"></app-admin-side-bar>
+        <div class="dashboard_content">
+            <div class="topTab">
+                <div class="tpbox" [routerLink]="['/admin/products']">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_cube.svg" alt="">
+                    <p id="title">All Products</p>
+                    <p id="amount">0</p>
+                </div>
+                <div class="tpbox" [routerLink]="['/admin/report']">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                    <p id="title">View Reports</p>
+                    <p id="amount">0</p>
+                </div>
+                <div class="tpbox" [routerLink]="['/admin/merchants']">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_pending.svg" alt="">
+                    <p id="title">Active Merchants</p>
+                    <p id="amount">0</p>
+                </div>
+                <div class="tpbox" [routerLink]="['/admin/affiliates']">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_new.svg" alt="">
+                    <p id="title">Active Affiliates</p>
+                    <p id="amount">0</p>
+                </div>
+            </div>
+            <div class="detailsTab">
+                <div class="dtContent">
+                    <div class="infoBox">
+                        <div class="topper">
+                            <p>Pending Products</p>
+                            <a [routerLink]="['/admin/products']">See all</a>
+                        </div>
+                        <div class="inList">
+                            <div class="listItem" *ngFor="let item of unapprovedProducts|slice:0:5">
+                                <div class="p-box">
+                                    <p>{{item['productName']}}</p>
+                                    <small>{{item['merchant'].businessName}}</small>
+                                </div> 
+                                <a  id="p-link" [routerLink]="['/admin/product']" [queryParams]="{id: item['id']}">View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphBox"></div>
+                </div>
+            </div>
+            <div class="active_product_table">
+                <div class="intro_tab">
+                    <p>ACTIVE PRODUCT CAMPAIGNS</p>
+                    <button [routerLink]="['/admin/market']" >View Marketplace</button>
+                </div>
+                <!-- full state -->
+                <!-- state shows if user has active campaigns -->
+                <div class="table">
+                    <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
+<!--                            <th>Brand Name</th>-->
+                            <th>Sales Amount</th>
+<!--                            <th>Commission rate</th>-->
+                            <th>Commission</th>
+                            <th>Copy Link</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of campaigns, let i = index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{item['productName']}}</td>
+                            <td>{{item['quantity']}}</td>
+                            <td>{{item['category']}}</td>
+<!--                            <td>{{item['brandName']}}</td>-->
+                            <td>&#8358;{{item['unitPrice']}}</td>
+
+
+                            <td>&#8358; {{item['isPercent'] == true ? (item['unitPrice'] * item['rate'] / 100) : item['amountPerConversion']}}</td>
+
+
+                            <!--                            <td *ngIf="item['isPercent'] == true; else na">-->
+<!--                                {{item['rate']}}%-->
+<!--                            </td>-->
+<!--                            <ng-template #na>-->
+<!--                                <td>N/A</td>-->
+<!--                            </ng-template>-->
+<!--                            <td *ngIf="item['isPestatrcent'] == false; else naw" >&#8358;{{item['amountPerConversion']}}</td>-->
+<!--                            <ng-template #naw>-->
+<!--                                <td>N/A</td>-->
+<!--                            </ng-template>-->
+                            <td class="actionBox" [id]="item['shortUrl']" (click)="getLink(item['shortUrl'])">
+                                <!-- action btn -->
+                                <img src="../../../../assets/icons/Dashboard_icons/copyqr.svg" alt="" srcset="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                
+                 <!--Empty state  -->
+                 <!-- State shows for users with no active campaigns -->
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

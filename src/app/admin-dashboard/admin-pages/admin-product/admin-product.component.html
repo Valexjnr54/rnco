@@ -1,0 +1,74 @@
+<div class="dashboard">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-admin-side-bar (showLogOutModal)="logOutModalToggle($event)"></app-admin-side-bar>
+        <div class="dashboard_content">
+            <div class="product_content_top">
+                <div class="product_img_gallery">
+                    <img [src]="indexImage" alt="" srcset="" class="main_img">
+                    <div class="small_img_row">
+                        <img *ngFor="let image of imageUrls" [src]="image" alt="" class="subImg">
+                    </div>
+                </div>
+                <div class="product_specification">
+                    <div class="ps_top">
+                        <p id="product_name">{{productDetails['productName']}}</p>
+                        <p id="location">{{productDetails['merchant'].businessName}}</p>
+                        <p id="state">{{productDetails['merchant']['address'].city}}, {{productDetails['merchant']['address'].state}}</p>
+                        <p id="price">&#8358; {{productDetails['unitPrice']}}</p>
+                    </div>
+                    <div class="specs_grid">
+<!--                        <div class="spec_box">-->
+<!--                            <p class="spec_title">Brand Name</p>-->
+<!--                            <p class="productSpec">LG</p>-->
+<!--                        </div>-->
+                        <div class="spec_box">
+                            <p class="spec_title">Category</p>
+                            <p class="productSpec">{{category}}</p>
+                        </div>
+                        <div class="spec_box">
+                            <p class="spec_title">Delivery Period</p>
+                            <p class="productSpec">{{productDetails['deliveryDuration']}} {{productDetails['deliveryPeriod']}} (s)</p>
+                        </div>
+                        <div class="spec_box">
+                            <p class="spec_title">Number in Stock</p>
+                            <p class="productSpec">{{productDetails['quantity']}}</p>
+                        </div>
+                        <div class="spec_box">
+                            <p class="spec_title">Commission</p>
+                            <p class="productSpec">&#8358; {{productDetails['productPayoutConfig'].percent == true ? (productDetails['unitPrice'] * productDetails['productPayoutConfig'].rate / 100) : productDetails['productPayoutConfig'].amountPerConversion}}</p>
+                        </div>
+                    </div>
+                    <div class="button_row">
+                        <div id="market" *ngIf="checkApproval == true">
+                            <a class="edit_product" [routerLink]="['/admin/editProduct']" [queryParams]="{id: productDetails['id']}">Edit Product</a>
+                            <button *ngIf="productDetails['isListed']==true" (click)="removeFromMarket()" class="remove">Remove from Marketplace</button>
+                            <button *ngIf="productDetails['isListed']==false" (click)="addToMarket()" class="add">Add to Marketplace</button>
+                        </div>
+                        <div id="approve" *ngIf="checkApproval == false">
+                            <a class="edit_product" [routerLink]="['/admin/editProduct']" [queryParams]="{id: productDetails['id']}">Edit Product</a>
+                            <button class="decline">Decline</button>
+                            <button (click)="approveProductCall()" class="approve">Approve</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="product_content_bottom">
+                <div class="product_description">
+                    <p class="pdTitle">Product Description</p>
+                    <p>{{productDetails['description']}}</p>
+                </div>
+                <div class="product_addons">
+                    <p class="paTitle">Delivery Options</p>
+                    <p>
+                      <span>{{productDetails['deliveryOption']=="DOOR_DELIVERY" ? "Door Delivery" : "Pick Up"}}</span>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

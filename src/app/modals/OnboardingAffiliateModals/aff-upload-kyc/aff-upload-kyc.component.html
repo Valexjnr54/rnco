@@ -1,0 +1,42 @@
+<div class="affUploadKyc">
+    <form class="uploadKycContent" #form="ngForm">
+        <app-step-indicator></app-step-indicator>
+        <div class="UK_intro">
+            <p id="up">Upload KYC</p>
+            <div class="notification">
+                <img src="../../../assets/icons/caution.svg" alt="" srcset="">
+                <p class="regMerchant">Accepted national means of identification and business registration documents are
+                    required.</p>
+            </div>
+        </div>
+        <div class="UK_con">
+            <div class="personal_docs">
+                <p>Personal Documents</p>
+                <div class="document_row">
+                    <div class="form_group">
+                        <p>Document Type</p>
+                        <select name="personalDocType" id="personalDocType" #personDoc="ngModel"
+                            [(ngModel)]="personalDocType">
+                            <option value="">Select a document Type</option>
+                            <option value="DRIVERS_LICENSE">Drivers License</option>
+                            <option value="NIN">National ID</option>
+                            <option value="VOTERS_ID">Voters ID</option>
+                        </select>
+                        <div *ngIf="(personDoc.dirty || personDoc.touched || form.submitted) && !personDoc.valid">
+                            <small *ngIf="personDoc.required">select one of the options</small>
+                        </div>
+                    </div>
+                    <div class="form_group">
+                        <p>Document Number</p>
+                        <input type="text" name="personalDocNo" id="personalDocNo" placeholder="Enter Document Number"
+                            #personDocNo="ngModel" [(ngModel)]="personalDocNo">
+                        <div *ngIf="(personDocNo.dirty || personDocNo.touched || form.submitted) && !personDocNo.valid">
+                            <small *ngIf="personDocNo.required">Valid Document Number is required</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<button class="doneUploading" (click)="uploadPersonalFiles('fifth_step')">Done</button>
+</form>
+</div>

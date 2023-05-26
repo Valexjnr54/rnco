@@ -1,0 +1,78 @@
+<app-aff-dashboard-navbar></app-aff-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-aff-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-aff-dashboard-sidebar>
+    <div class="profile">
+        <p class="intro">Profile</p>
+        <div class="current_user">
+            <div class="user_id">
+                <img class="profileImage" src="https://picsum.photos/200/300" alt="">
+                <div class="user_details">
+                    <p class="username">{{user['lastName']}} {{user['firstName']}} <img src="../../../../assets/icons/Dashboard_icons/verified_badge.png" alt=""></p>
+                    <p class="userTag">@{{user['login']}}</p>
+                </div>
+            </div>
+            <a [routerLink]="['/affiliate/editProfile']" class="editProfile">Edit Profile</a>
+        </div>
+        <div class="profile_box">
+            <p class="pb_intro">PERSONAL INFORMATION</p>
+            <div class="pb_content">
+                <div class="pbc_hold">
+                    <p class="pb_title">Email Address</p>
+                    <p class="pb_user">{{user['email']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Phone Number</p>
+                    <p class="pb_user">+ {{user['phoneNumber']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Gender</p>
+                    <p class="pb_user">{{user['gender'] || 'Male'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="profile_box">
+            <p class="pb_intro">OTHER INFORMATION</p>
+            <div class="pb_content">
+                <div class="pbc_hold">
+                    <p class="pb_title">Country</p>
+                    <p class="pb_user">{{userAddress['country']}} </p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">State</p>
+                    <p class="pb_user">
+                        {{userAddress['state']}}
+                    </p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Street</p>
+                    <p class="pb_user">{{userAddress['street']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Street</p>
+                    <p class="pb_user">{{user['website']}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="profile_box">
+            <p class="pb_intro">ACCOUNT INFORMATION</p>
+            <div class="pb_content">
+                <div class="pbc_hold">
+                    <p class="pb_title">Account Name</p>
+                    <p class="pb_user">{{userBank['lastName']}} {{userBank['firstName']}}</p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Banking Institution</p>
+                    <p class="pb_user">{{userBank['bankName']}} </p>
+                </div>
+                <div class="pbc_hold">
+                    <p class="pb_title">Account Number</p>
+                    <p class="pb_user">
+                        {{userBank['accountNo']}}
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

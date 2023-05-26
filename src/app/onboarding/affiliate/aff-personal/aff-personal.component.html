@@ -1,0 +1,113 @@
+<!-- Notifications -->
+<!-- Is processing -->
+<!-- <div class="isProcessing" *ngIf="processing$">
+    
+</div> -->
+<!-- User Pop up -->
+<!-- <div class="siteNotif" *ngIf="submitSucessful">
+    <app-email-confirmation [activationLink]="activationLink" [email]="email"></app-email-confirmation>
+</div> -->
+<div class="personalDetails">
+    <div class="pdtopper">
+        <img src="../../../../assets/icons/arrow-left.svg" alt="">
+        <p>Personal Information</p>
+    </div>
+    <form (ngSubmit)="validateForm()" #form="ngForm">
+        <div class="formGroup">
+            <label for="firstName">First Name</label>
+            <input type="text" [(ngModel)]="firstName" #fname="ngModel" name="firstName" id="firstName" placeholder="Enter first Name" required>
+            <div *ngIf="(fname.dirty || fname.touched || form.submitted) && !fname.valid">
+                <small *ngIf="fname.required">FirstName is Required</small>
+            </div>
+
+        </div>
+        <div class="formGroup">
+            <label for="lastName">Last Name</label>
+            <input type="text" [(ngModel)]="lastName" name="lastName" #lname="ngModel" id="lastName" placeholder="Enter Last Name" required>
+            <div *ngIf="(lname.dirty || lname.touched || form.submitted) && !lname.valid">
+                <small *ngIf="lname.required">LastName is required</small>
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="middleName">Middle Name(Optional)</label>
+            <input type="text" [(ngModel)]="middleName" name="middleName" #mname="ngModel" id="middleName" placeholder="Enter Middle Name">
+        </div>
+        <div class="formGroup">
+            <label for="username">Username</label>
+            <input type="text" name="username" [(ngModel)]="login" #username="ngModel" id="username" placeholder="@yourname" required>
+            <div *ngIf="(username.touched || username.dirty || form.submitted) && !username.valid">
+                <small *ngIf="username.required">Username is required</small>
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" (blur)="checkEmail()" #emailadd="ngModel" [(ngModel)]="email" id="email" placeholder="yourname@email.com">
+            <small *ngIf="validEmail == false">&#33; This is not a valid email address</small>
+            <div *ngIf="(emailadd.touched || emailadd.dirty || form.submitted) && !emailadd.valid">
+                <small *ngIf="emailadd.required">Email address is required</small>
+            </div>
+        </div>
+        <div class="formGroup phoneFg">
+            <label for="phonenumber">Phone Number</label>
+            <div>
+                <input type="text" value="+234" disabled>
+                <input type="text" name="phonenumber" [(ngModel)]="phoneNumber" #phone="ngModel" id="phonenumber" (blur)="checkMobile()" placeholder="08015379315">
+            </div>
+            <small *ngIf="validMobile == false">&#33; This is not a valid phone number</small>
+            <div *ngIf="(phone.dirty || phone.touched || form.submitted) && !phone.valid"> 
+                <small *ngif="phone.required">This is not a valid phone number</small>
+            </div>
+
+        </div>
+        <div class="formGroup">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" #dates="ngModel" (change)="checkDob()">
+            <small *ngIf="validDob == false" >&#33; Please you must be older than 18 years</small>
+            <div *ngIf="(dates.dirty || dates.touched || form.submitted) && !dates.valid">
+                 <small *ngIf="dates.required">Date of birth field is required</small>
+            </div>
+        </div>
+        <!-- Password -->
+        <div class="formGroup">
+            <label for="password">Password</label>
+            <input [type]="hidePassword ? 'password' : 'text'" name="password" #pwd="ngModel" [(ngModel)]="password" id="password">
+            <div class="visibilityToggler" (click)="hidePassword = !hidePassword">
+                <!-- eye close -->
+                <img src="../../assets/icons/password_eye_open.svg" alt="" srcset="">
+                <!-- eye open -->
+            </div>
+            <div *ngIf="(pwd.dirty || pwd.touched || form.submitted) && !pwd.valid">
+                <small *ngIf="pwd.required">Password is required</small>
+                <small *ngIf="pwd.minLength">Password should be between 8 characters or above 8 characters</small>
+            </div>
+        </div>
+        <!-- Confirm Password -->
+        <div class="formGroup">
+            <label for="conPassword">Confirm Password</label>
+            <input 
+                [type]="hideConPassword ? 'password' : 'text'" name="confirmPassword" 
+                [(ngModel)]="confirmPassword" id="confirmPassword"
+                (keyup)="passChecker()" 
+                #cpassword="ngModel"
+                >
+            <div class="visibilityToggler" (click)="hideConPassword = !hideConPassword">
+                <!-- eye close -->
+                <img src="../../assets/icons/password_eye_open.svg" alt="" srcset="">
+                <!-- eye open -->
+            </div>
+            <small *ngIf="validPassword == false">&#33; The passwords do not match</small>
+            <div *ngIf="(cpassword.touched || cpassword.dirty || form.submitted) && !cpassword.valid">
+                <small *ngIf="cpassword.required">Confirm Password is required</small>
+            </div>
+           
+
+        </div>  
+        <div class="formWholeLength">
+            <button type="submit">
+            Continue</button>
+            <a href="/login">Already an affiliate, login</a>
+        </div>
+    </form>
+</div>
+
+

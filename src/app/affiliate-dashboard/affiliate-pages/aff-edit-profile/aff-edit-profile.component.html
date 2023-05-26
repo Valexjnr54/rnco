@@ -1,0 +1,17 @@
+<app-aff-dashboard-navbar></app-aff-dashboard-navbar>
+<a [routerLink]="['/affiliate/profile']" class="linkBack">
+    <img src="../../../../assets/icons/arrow-left.svg" alt="">
+    Edit Profile
+</a>
+<div class="edProfile_content">
+    <div class="badge_row">
+        <p class="personal" (click)="togglerFunction('Personal')" [ngClass]="{'active': currentModel == 'Personal'}">Personal Information</p>
+        <p class="business" (click)="togglerFunction('Business')" [ngClass]="{'active': currentModel == 'Business'}">Business Information</p>
+        <p class="account" (click)="togglerFunction('Account')" [ngClass]="{'active': currentModel == 'Account'}">Account Information</p>
+    </div>
+    <div class="toggleHolder">
+        <app-edit-affiliate-personal  [User]="user" *ngIf="currentModel == 'Personal'"></app-edit-affiliate-personal >
+        <app-edit-affiliate-business  [User]="user" *ngIf="currentModel == 'Business'" ></app-edit-affiliate-business >
+        <app-edit-affiliate-bank  [User]="user" *ngIf="currentModel == 'Account'"></app-edit-affiliate-bank>
+    </div>
+</div>

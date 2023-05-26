@@ -1,0 +1,60 @@
+<app-aff-dashboard-navbar></app-aff-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-aff-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-aff-dashboard-sidebar>
+    <main class="dashboard_content">
+        <h4 class="intro">Overview</h4>
+        <div class="topTab">
+            <div class="tpbox">
+                <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                <p id="title">All Campaigns</p>
+                <p id="amount">{{affiliateCampaigns.length}}</p>
+            </div>
+            <div class="tpbox">
+                <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_cube.svg" alt="">
+                <p id="title">
+                    Estimated Earnings
+                </p>
+                <p id="amount">&#8358; {{estimatedEarnings}}</p>
+            </div>
+            <div class="tpbox" [routerLink]="['/affiliate/affiliateMarket']">
+                <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_new.svg" alt="">
+                <p>New Campaign</p>
+            </div>
+        </div>
+        <div class="active_product_table">
+            <div class="intro_tab">
+                <p>ACTIVE PRODUCT CAMPAIGNS</p>
+                <button>View Marketplace</button>
+            </div>
+            <table class="table-auto">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Product</th>
+                        <th>Merchant</th>
+                        <th>Category</th>
+                        <th>ShortUrl</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of affiliateCampaigns, let i = index">
+                        <td>{{ i+1 }}</td>
+                        <td>
+                            <p>{{item['productName']}}</p>
+<!--                            <small>{{item['productId']}}</small>-->
+                        </td>
+                        <td>{{item['merchName']}}</td>
+                        <td>{{item['category']}}</td>
+                        <td>{{item['shortUrl']}}</td>
+                        <td class="actionBox" [id]="item['shortUrl']" (click)="getLink(item['shortUrl'])">
+                            <!-- action btn -->
+                            <img src="../../../../assets/icons/Dashboard_icons/copyqr.svg" alt="" srcset="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>

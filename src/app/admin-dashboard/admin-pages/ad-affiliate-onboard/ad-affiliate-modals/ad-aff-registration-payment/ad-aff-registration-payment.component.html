@@ -1,0 +1,38 @@
+<div class="affReg-pay">
+    <div class="reg-content">
+        <div class="step_indicator">
+            <div class="SI_box">1</div>
+            <div class="SI_box">2</div>
+            <div class="SI_box">3</div>
+        </div>
+        <div class="rp_intro">
+            <p id="up">Registration Payment</p>
+        </div>
+        <div class="rp_con">
+            <p id="title">Terms and conditions</p>
+            <p class="terms">
+                The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. 
+                Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for
+                your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions 
+                document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and 
+                Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the 
+                Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko.
+            </p>
+            <div class="form-group">
+                <input type="checkbox" name="cansubmit" id="cansubmit" class="accept" [(ngModel)]="cansubmit">
+                <label for="cansubmit">Accept</label>
+            </div>
+            <button 
+            (click)="nextStep()" 
+            class="final" 
+            [disabled]="!cansubmit"
+            > Continue </button>
+        </div>
+    </div> 
+
+    <div *ngIf="this.getLoading()">
+        <img src="../../../../../../assets/img/Loading_.gif"/>
+    </div>
+</div>
+
+

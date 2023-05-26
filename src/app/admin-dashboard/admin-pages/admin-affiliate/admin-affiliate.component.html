@@ -1,0 +1,115 @@
+<div class="dashboard">
+    <app-admin-nav-bar></app-admin-nav-bar>
+    <app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-admin-side-bar (showLogOutModal)="logOutModalToggle($event)"></app-admin-side-bar>
+        <div class="dashboard_content">
+            <div class="topHolder">
+                <div class="top_intro">
+                    <div class="top_row">
+                        <div class="merchant_intro">
+                            <img src="https://picsum.photos/200/300" alt="" srcset="">
+                            <div class="merDetail">
+                                <p class="merchantName">{{affiliate.firstName}} {{affiliate.lastName}}</p>
+                                <small>@{{affiliate.login}}</small>
+                            </div>
+                        </div>
+                        <p class="state">
+                            Active
+                        </p>
+                    </div>
+                    <div class="userDetailGrid">
+                        <div class="userDetail">
+                            <small class="title">Affiliate Name</small>
+                            <p class="user">{{affiliate.lastName}} {{affiliate.first}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Affiliate Address</small>
+                            <p class="user">{{affiliateAddress?.street === null ? 'N/A' : affiliateAddress.street}},
+                                {{affiliateAddress?.city === null ? 'N/A' : affiliateAddress.city}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">State</small>
+                            <p class="user">{{affiliateAddress?.state === null ? 'N/A' :  affiliateAddress.state }}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Email Address</small>
+                            <p class="user">{{affiliate?.email === null ? 'N/A' : affiliate.email}}</p>
+                        </div>
+                        <div class="userDetail">
+                            <small class="title">Phone Number</small>
+                            <p class="user">{{affiliate?.phoneNumber === null ? 'N/A' : affiliate.phoneNumber }}</p>
+                        </div>
+                    </div>
+                    <div class="btn_row">
+                        <button
+                            [routerLink]="['/admin/editAffiliate']"
+                            [queryParams]="{
+                                id: affiliate.id
+                            }"
+                        >Edit Affiliate Profile</button>
+                        <button
+                            [routerLink]="['/admin/market']"
+                            [queryParams]="{
+                                affiliateId: affiliate.id,
+                                affiliateName: affiliate.lastName + affiliate.firstName
+                            }"
+                            >Join Campaign</button>
+                        <button>More Actions</button>
+                    </div>
+                </div>
+            </div>
+            <div class="active_product_table">
+                <div class="intro_tab">
+                    <p>ACTIVE PRODUCT CAMPAIGNS</p>
+                    <button [routerLink]="['/admin/market']">View Marketplace</button>
+                </div>
+                <!-- full state -->
+                <!-- state shows if user has active campaigns -->
+                <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
+                            <th>Brand Name</th>
+                            <th>Sales Amount</th>
+                            <th>Commission rate</th>
+                            <th>Commission</th>
+                            <th>Copy Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of campaigns, let i = index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{item['productName']}}</td>
+                            <td>{{item['quantity']}}</td>
+                            <td>{{item['category']}}</td>
+                            <td>{{item['brandName']}}</td>
+                            <td>&#8358;{{item['unitPrice']}}</td>
+                            <td *ngIf="item['isPercent'] == true; else na">
+                                {{item['rate']}}%
+                            </td>
+                            <ng-template #na>
+                                <td>N/A</td>
+                            </ng-template>
+                            <td *ngIf="item['isPercent'] == false; else naw" >&#8358;{{item['amountPerConversion']}}</td>
+                            <ng-template #naw>
+                                <td>N/A</td>
+                            </ng-template>
+                            <td class="actionBox" [id]="item['shortUrl']" (click)="getLink(item['shortUrl'])">
+                                <!-- action btn -->
+                                <img src="../../../../assets/icons/Dashboard_icons/copyqr.svg" alt="" srcset="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <!--Empty state  -->
+                 <!-- State shows for users with no active campaigns -->
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+

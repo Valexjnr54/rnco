@@ -1,0 +1,34 @@
+<div class="reg-pay">
+    <div class="reg-content">
+        <div class="step_indicator">
+            <div class="SI_box">1</div>
+            <div class="SI_box">2</div>
+            <div class="SI_box">3</div>
+        </div>
+        <div class="rp_intro">
+            <p id="up">Registration Payment</p>
+        </div>
+        <div class="rp_con">
+            <p id="title">Terms and conditions</p>
+            <p class="terms">
+                The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. 
+                Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for
+                your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions 
+                document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and 
+                Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the 
+                Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko.
+                You will be charged the sum of NGN <b>56,000.50</b> for your registration.
+            </p>
+            <div class="form-group">
+                <input type="checkbox" name="accept" id="" class="accept" [(ngModel)]="cansubmit">
+                <label for="accept">Accept</label>
+            </div>
+            <button
+                class="final"
+                (click)="userAgree()"
+                [disabled]="!cansubmit" 
+                >Continue
+            </button>
+        </div>
+    </div> 
+</div>

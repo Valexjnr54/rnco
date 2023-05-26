@@ -1,0 +1,44 @@
+<app-dashboard-navbar></app-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-dashboard-sidebar>
+    <div class="dashboard_content">
+        <div class="current_user">
+            <div class="user_id">
+                <img class="profileImage" src="https://picsum.photos/200/300" alt="">
+                <div class="user_details">
+                    <p class="username">{{user['lastName']}} {{user['firstName']}} <img src="../../../../assets/icons/Dashboard_icons/verified_badge.png" alt=""></p>
+                    <p class="userTag">@{{user['login']}}</p>
+                </div>
+            </div>
+            <a [routerLink]="['/merchant/profile']" class="editProfile">View Profile</a>
+        </div>
+        <div class="profileBox">
+            <div class="pb_content">
+                <p class="ps">PROFILE SETTINGS</p>
+                <div id="inside">
+                    <div class="profileTalk">
+                        <p class="bold">Your Profile</p>
+                        <small>Modify your Personal, business and account information</small>
+                    </div>
+                    <a [routerLink]="['/merchant/editProfile']" class="editProfile">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="profileBox">
+            <div class="pb_content">
+                <p class="ps">SECURITY SETTINGS</p>
+                <div id="inside">
+                    <div class="profileTalk">
+                        <p class="bold">Password</p>
+                        <small>******************</small>
+                    </div>
+                    <div class="btn-row">
+                        <a [routerLink]="['/merchant/changePassword']" class="editProfile">Change Password</a>
+                        <a [routerLink]="['/merchant/ResetPassword']" class="editProfile">Reset Password</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

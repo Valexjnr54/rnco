@@ -1,0 +1,101 @@
+<app-aff-dashboard-navbar></app-aff-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+    <div class="dashboard_container">
+        <app-aff-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-aff-dashboard-sidebar>
+        <!-- Onboarding completion process -->
+        <!-- this is to be displayed the first time a userlogs in -->
+        <main class="dashboard_content">
+            <h4 class="intro">Overview</h4>
+            <div class="topTab">
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_cube.svg" alt="">
+                    <p id="title">All Campaigns</p>
+                    <p id="amount">{{affiliateCampaigns.length}}</p>
+                </div>
+                <div class="tpbox">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                    <p id="title">Active Campaigns</p>
+                    <p id="amount">{{affiliateCampaigns.length}}</p>
+                </div>
+                <div class="tpbox" [routerLink]="['/affiliate/reports']">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_pending.svg" alt="">
+                    <p id="title">View Report</p>
+                </div>
+                <div class="tpbox" [routerLink]="['/affiliate/affiliateMarket']">
+                    <img id="tpIcon" src="../../assets/icons/Dashboard_icons/alt_new.svg" alt="">
+                    <p>Join Campaign</p>
+                </div>
+            </div>
+            <div class="detailsTab">
+                <div class="dtContent">
+                    <div class="infoBox">
+                        <div class="personalDetails">
+                            <img src="https://picsum.photos/200/300" alt="">
+                            <div class="pdContents">
+                                <p class="entName">{{affiliate['firstName']}} {{affiliate['lastName']}}</p>
+                                <p class="username">{{affiliate['login']}}</p>
+                            </div>
+                        </div>
+                        <div class="merchantcon">
+                            <p>Affiliate Configuration</p>
+                            <img [routerLink]="['/affiliate/settings']" src="../../assets/icons/Dashboard_icons/mc_setting.svg" alt="">
+                        </div>
+                        <div class="conDetails">
+                            <div class="cdItem">
+                                <p class="cdTitle">Country</p>
+                                <p class="cdCont">{{affiliate['address'].country}}</p>
+                            </div>
+                            <div class="cdItem">
+                                <p class="cdTitle">State</p>
+                                <p class="cdCont">{{affiliate['address'].state}}</p>
+                            </div>
+                            <div class="cdItem">
+                                <p class="cdTitle">City </p>
+                                <p class="cdCont">{{affiliate['address'].city}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphBox"></div>
+                </div>
+            </div>
+            <div class="active_product_table">
+                <div class="intro_tab">
+                    <p>ACTIVE PRODUCT CAMPAIGNS</p>
+                    <button [routerLink]="['/affiliate/affiliateMarket']">View Marketplace</button>
+                </div>
+                <!-- full state -->
+                <!-- state shows if user has active campaigns -->
+                <table class="table-auto">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Product</th>
+                            <th>Merchant Id</th>
+                            <th>Category</th>
+                            <th>ShortUrl</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of affiliateCampaigns, let i = index">
+                            <td>{{ i+1 }}</td>
+                            <td>
+                                <p>{{item['productName']}}</p>
+                                <small>{{item['productId']}}</small>
+                            </td>
+                            <td>{{item['merchId']}}</td>
+                            <td>{{item['category']}}</td>
+                            <td>{{item['shortUrl']}}</td>
+                            <td class="actionBox" [id]="item['shortUrl']" (click)="getLink(item['shortUrl'])">
+                                <!-- action btn -->
+                                <img src="../../../../assets/icons/Dashboard_icons/copyqr.svg" alt="" srcset="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <!--Empty state  -->
+                 <!-- State shows for users with no active campaigns -->
+            </div>
+        </main>
+    </div>
+

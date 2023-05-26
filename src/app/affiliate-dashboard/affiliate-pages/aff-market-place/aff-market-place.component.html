@@ -1,0 +1,20 @@
+<app-aff-dashboard-navbar></app-aff-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-aff-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-aff-dashboard-sidebar>
+    <main class="dashboard_content">
+        <!-- <h4 class="intro">Marketplace</h4> -->
+        <div class="productTab">
+            <p class="ptTitle">
+                Market Place
+            </p>
+            <!-- Active state -->
+            <!-- State shows if user has products -->
+            <div class="ptGrid">
+                <app-aff-product-card *ngFor="let product of productArray" [Products]="product"></app-aff-product-card>
+            </div>
+            <!-- Empty State -->
+            <!-- state shows if user has no products -->
+        </div>
+    </main>
+</div>

@@ -1,0 +1,46 @@
+.mw-con{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .mw-content{
+        width: 40%;
+        padding: 1rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 8px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .mwTitle{
+            font-size: 18px;
+            font-weight: 600;
+        }
+        img.rnco_logo{
+            width: 64px;
+            height: 64px;
+            margin: 0.5rem 0px;
+        }
+        .mwNotice{
+            font-size: 14px;
+        }
+        .mwLinkOut{
+            text-decoration: none;
+            color: #1A66CD;
+            border: 1px solid #1A66CD;
+            border-radius: 8px;
+            padding: 4px 0px;
+            width: 100%;
+            font-weight: 600;
+            margin-top: 16px;
+            cursor: pointer;
+            &:hover{
+                color: #fff;
+                background-color: #1A66CD;
+            }
+            &:focus{
+                background-color: #708aaf;
+            }
+        }
+    }
+}

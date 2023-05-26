@@ -1,0 +1,44 @@
+.loginContent{
+    width: 90%;
+    margin: 2rem auto;
+    .topper{
+        display: flex;
+        align-items: center;
+        img{
+            cursor: pointer;
+        }
+        p{
+            margin: 0px 8px;
+            font-weight: 700;
+        }
+    }
+    .lwLinks{
+        margin: 1rem 0px;
+        height: 50vh;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        a{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            p{
+                margin: 4px auto;
+                width: 60%;
+            }
+        }
+        .lwAff{
+            background: hsla(215, 92%, 35%, 1);
+            color: #DDE9FA;
+            border-radius: 16px 0px 0px 16px;
+        }
+        .lwMer{
+            background: hsla(215, 73%, 92%, 1);
+            color: #074DAD;
+            border-radius: 0px 16px 16px 0px;
+        }
+    }
+}

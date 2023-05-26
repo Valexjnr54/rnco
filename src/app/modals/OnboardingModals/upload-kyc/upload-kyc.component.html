@@ -1,0 +1,80 @@
+<div class="uploadKyc">
+    <div class="uploadKycContent" >
+        <div class="step_indicator">
+            <div class="SI_box">1</div>
+            <div class="SI_box">2</div>
+            <div class="SI_box">3</div>
+        </div>
+        <div class="UK_intro">
+            <p id="up">Upload KYC</p>
+            <div class="notification">
+                <img src="../../../assets/icons/caution.svg" alt="" srcset="">
+                <p class="regMerchant">Accepted national means of identification or business registration documents are required.</p>
+            </div>
+        </div>
+        <form class="UK_con" #form="ngForm">
+            <div class="personal_docs" *ngIf="isregistered == false ; else businessUpload">
+                <p>Personal Documents</p>
+                <div class="document_row">
+                    <div class="form_group">
+                        <p>Document Type</p>
+                        <select name="personalDocType" id="personalDocType"  #personDoc="ngModel" [(ngModel)]="personalDocType">
+                            <option value="">Select a document Type</option>
+                            <option value="DRIVERS_LICENSE">Drivers License</option>
+                            <option value="NIN">National ID</option>
+                            <option value="VOTERS_ID">Voter's Card</option>
+                        </select>
+                        <small *ngIf="(personDoc.dirty || personDoc.touched || form.submitted) && !personalDoc.valid">
+                            select from the above option
+                        </small>
+                    </div>
+                    <div class="form_group">
+                        <p>Document Number</p>
+                        <input type="text" name="personalDocNo" id="personalDocNo" #personDocNo="ngModel"  placeholder="Enter Document Number" [(ngModel)]="personalDocNo">
+                        <small *ngIf="(personDocNo.dirty || personDocNo.touched || form.submitted) && !personDocNo.valid">
+                            select from the above option
+                        </small>
+                    </div>
+                    <button class="doneUploading" (click)="uploadPersonalFiles('fifth_step')">Done</button>
+                </div>
+            </div>
+            <ng-template #businessUpload>
+                <div class="business_docs">
+                    <p>Business Documents</p>
+                    <div class="document_row">
+                        <div class="form_group">
+                            <p>Business Type</p>
+                            <select defaultValue="{'CAC'}" name="businessType" id="businessType" #busType="ngModel"  [(ngModel)]="businessType">
+                                <!-- <option value="">Select a document Type</option> -->
+                                <option value="business">Business</option>
+                                <option value="limited_company">Limited Company</option>
+                                <option value="incorporated_trustee">Incorporated Trustee</option>
+                            </select>
+                            <small *ngIf="(busType.dirty || busType.touched || form.submitted) && !busType.valid">
+                                 select from the above option
+                             </small>
+                        </div>
+                        <div class="form_group">
+                            <p>Document Type</p>
+                            <select defaultValue="{'CAC'}" name="businessDocType" #busDocType="ngModel" [(ngModel)]="businessDocType">
+                                <!-- <option value="">Select a document Type</option> -->
+                                <option value="CAC" selected>CAC certificate</option>
+                            </select>
+                            <small *ngIf="(businessDocType.dirty || businessDocType.touched || form.submitted) && !businessDocType.valid">
+                                 select from the above option
+                             </small>
+                        </div>
+                        <div class="form_group">
+                            <p>Document Number</p>
+                            <input type="text" name="businessDocNo" id="businessDocNo" #docBusiness="ngModel"  placeholder="Enter RC number" [(ngModel)]="businessDocNo">
+                            <small *ngIf="(docBusiness.dirty || docBusiness.touched || form.submitted) && !docBusiness.valid">
+                                 Document number is required
+                             </small>
+                        </div>
+                        <button class="doneUploading" (click)="uploadBusinessFiles('fifth_step')">Done</button>
+                    </div>
+                </div>
+            </ng-template>
+        </form>
+    </div>
+</div>

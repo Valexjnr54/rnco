@@ -1,0 +1,40 @@
+<form #form="ngForm" class="editAccount">
+    <div class="form-group">
+         <label for="accountNumber">Account Number</label>
+         <input type="text" name="accountNumber" [(ngModel)]="accountNumber" #acctNo="ngModel" id="accountNumber"/>
+         <div *ngIf="(acctNo.touched || acctNo.dirty) && !acctNo.valid">
+             <small *ngIf="acctNo.required">Account Number is required</small>
+         </div>
+    </div>
+    <div class="form-group">
+         <label for="accountName">Account Name</label>
+         <input type="text" name="accountName" [(ngModel)]="accountName" #acctName="ngModel" id="accountName" disabled/>
+         <div *ngIf="(acctName.touched || acctName.dirty) && !acctNo.valid">
+             <small *ngIf="acctName.required">Account Number is required</small>
+         </div>
+    </div>
+    <div class="form-group">
+         <label for="accountType">Account Type</label>
+         <select name="accountType" [(ngModel)]="accountType" #acctType="ngModel" id="accountType">
+             <option value="">Select Account Type</option>
+                 <option value="SAVINGS">Savings</option>
+                 <option value="CURRENT">Current</option>
+         </select>
+         <div *ngIf="(acctType.touched || acctType.dirty) && !acctType.valid">
+             <small *ngIf="acctType.required">Account Type is required</small>
+         </div>
+    </div>
+    <div class="form-group">
+         <label for="financialInstitution">Financial Institution</label>
+         <select name="financialInstitution" (change)="getCode()" [(ngModel)]="financialInstitution" #bank="ngModel" id="financialInstitution">
+             <option value="" >Please select bank</option>
+             <option [ngValue]="User['bankAccount']['bankName']">{{financialInstitution}}</option>
+                 <option *ngFor="let bank of bankDetails" [value]="bank.name">{{bank.name}}</option>   
+         </select>
+         <div *ngIf="(bank.touched || bank.dirty) && !bank.valid">
+             <small *ngIf="acctNo.required">Financial Institution is required</small>
+         </div>
+    </div>
+     <button type="submit" (click)="updatebank()" class="submit">Done</button>
+ 
+ </form>

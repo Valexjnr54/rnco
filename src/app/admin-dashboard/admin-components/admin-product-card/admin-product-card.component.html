@@ -1,0 +1,23 @@
+<div class="ptCard">
+    <div class="ptImgBox">
+        <img class="productImg" [src]="Image" alt="">
+        <!-- ========Admin Approval====== -->
+        <img *ngIf="Products['approvalStatus'] == 'N'"src="../../assets/icons/Dashboard_icons/app_pending.svg" alt="" class="adminApproval appPendin">
+        <img *ngIf="Products['approvalStatus'] == 'Y'"src="../../../../assets/icons/Dashboard_icons/app_done.svg" alt="" class="adminApproval appPendin">
+        <!-- =============== -->
+        <!-- ======== Product marketplace img============= -->
+        <!-- Product not added to marketplace -->
+        <!-- action add -->
+        <img *ngIf="Products['isListed'] == true "  src="../../assets/icons/Dashboard_icons/add_market.svg" alt="" class="ptMarketIcon addMarket">
+        <img *ngIf="Products['isListed'] == false " src="../../../../assets/icons/Dashboard_icons/rm_market.svg" alt="" class="ptMarketIcon rmMarket">
+        <!-- Product added to marketplace -->
+        <!-- action remove -->
+    </div>
+    <div class="ptcardCon">
+        <!-- <p class="merchantName">{{Products['merchantName']}}</p> -->
+        <p class="productName">{{Products['productName'] ?? null}}</p>
+        <p class="productPrice">&#x20A6;{{Products['unitPrice'] ?? null}}</p>
+        <p class="productStock">{{Products['quantity'] ?? null}} IN STOCK</p>
+    </div>
+    <a class="productBtn" [routerLink]="['/admin/product']" [queryParams]="{id: Products['id']}">View Product</a>
+</div>

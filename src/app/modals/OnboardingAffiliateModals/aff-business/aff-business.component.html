@@ -1,0 +1,110 @@
+<div class="affBusinessDetails">
+    <div class="bdtopper">
+        <img src="../../../../assets/icons/arrow-left.svg" alt="">
+        <p>Business Information</p>
+    </div>
+    <form (ngSubmit)="validateForm('third_step')" #form="ngForm">
+        <div class="formGroup">
+            <label for="streetAddress">Street Address</label>
+            <input type="text" name="street" id="street"  placeholder="Enter Street Address" #local="ngModel" [(ngModel)]="street">
+            <div *ngIf="(local.dirty || local.touched || form.submitted) && !local.valid">
+                Street Address is field is required
+            </div>
+        </div>
+        <div class="formGroup">
+            <label for="country">Country</label>
+            <input type="text" name="country" id="country" value="Nigeria"  [(ngModel)]="country" disabled>
+        </div> 
+        <div class="formGroup">
+            <label for="state">State</label>
+            <input type="text" name="state" id="state" value="Edo state" disabled [(ngModel)]="state">
+        </div>
+        <div class="formGroup">
+            <label for="lga">Local Government Area</label>
+            <select name="lga" id="lga" aria-placeholder="select LGA" #Localadd="ngModel"  [(ngModel)]="lga">
+                <option value="Akoko-Edo">Akoko-Edo</option>
+                <option value="Egor">Egor</option>
+                <option value="Esan Central">Esan Central</option>
+                <option value="Esan North-East">Esan North-East</option>
+                <option value="Esan South-East">Esan South-East</option>
+                <option value="Esan West">Esan West</option>
+                <option value="Etsako Central">Etsako Central</option>
+                <option value="Etsako East">Etsako East</option>
+                <option value="Etsako West">Etsako West</option>
+                <option value="Igueben">Igueben</option>
+                <option value="Ikpoba-Okha">Ikpoba-Okha</option>
+                <option value="Oredo">Oredo</option>
+                <option value="Orhionmwon">Orhionmwon</option>
+                <option value="Ovia North-East">Ovia North-East</option>
+                <option value="Ovia South-West">Ovia South-West</option>
+                <option value="Owan East">Owan East</option>
+                <option value="Owan West">Owan West</option>
+                <option value="Uhunmwonde">Uhunmwonde</option>
+            </select>
+            <small *ngIf="(Localadd.dirty || Localadd.touched || form.submitted) && !Localadd.valid">
+                Street Address is field is required
+            </small>
+        </div>
+        <div class="formGroup">
+            <label for="city">City</label>
+            <select name="city" id="city" #cities="ngModel"  [(ngModel)]="city">
+                <option value="Agbede">Agbede</option>
+                <option value="Agenebode">Agenebode</option>
+                <option value="Auchi">Auchi</option>
+                <option value="Benin City">Benin City</option>
+                <option value="Egor">Egor</option>
+                <option value="Ekpoma">Ekpoma</option>
+                <option value="Emokweme">Emokweme</option>
+                <option value="Esan Central">Esan Central</option>
+                <option value="Esan North-East">Esan North-East</option>
+                <option value="Esan West">Esan West</option>
+                <option value="Eso">Eso</option>
+                <option value="Ewohimi">Ewohimi</option>
+                <option value="Ewu">Ewu</option>
+                <option value="Gelegele">Gelegele</option>
+                <option value="Ibillo">Ibillo</option>
+                <option value="Ibore">Ibore</option>
+                <option value="Idoa">Idoa</option>
+                <option value="Igarra">Igarra</option>
+                <option value="Igbanke">Igbanke</option>
+                <option value="Iguododo">Iguododo</option>
+                <option value="Ihievbe">Ihievbe</option>
+                <option value="Ikara">Ikara</option>
+                <option value="Imiekuri">Imiekuri</option>
+                <option value="Irrua">Irrua</option>
+                <option value="Iyamho">Iyamho</option>
+                <option value="Jattu">Jattu</option>
+                <option value="Lampese">Lampese</option>
+                <option value="Obadan">Obadan</option>
+                <option value="Ogwa">Ogwa</option>
+                <option value="Okpekpe">Okpekpe</option>
+                <option value="Okpella">Okpella</option>
+                <option value="Ososo">Ososo</option>
+                <option value="Owan East">Owan East</option>
+                <option value="Somorika">Somorika</option>
+                <option value="Ubiaja">Ubiaja</option>
+                <option value="Ugbokhare">Ugbokhare</option>
+                <option value="Ughoton">Ughoton</option>
+                <option value="Uhogua">Uhogua</option>
+                <option value="Ujiogba">Ujiogba</option>
+                <option value="Unuamen">Unuamen</option>
+                <option value="Unuedegor">Unuedegor</option>
+                <option value="Uokha">Uokha</option>
+                <option value="Uromi">Uromi</option>
+                <option value="Usonigbe">Usonigbe</option>
+                <option value="Uzebba">Uzebba</option>
+            </select>
+            <small *ngIf="(cities.dirty || cities.touched || form.submitted) && !cities.valid">
+                Street Address is field is required
+            </small>
+        </div>
+        <div class="formGroup">
+            <label for="web">Website (Optional)</label>
+            <input type="text" name="website" id="website" placeholder="yourbusinessname.com" [(ngModel)]="website">
+        </div>
+        <div class="formWholeLength">
+            <button type="submit">Next</button>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,32 @@
+<app-dashboard-navbar></app-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-dashboard-sidebar>
+    <main class="products_content">
+        <h4 class="intro">Products</h4>
+        <div class="ptTab">
+            <div class="ptBox">
+                <img id="ptIcon" src="../../../../assets/icons/Dashboard_icons/alt_cube.svg" alt="">
+                <p id="title">All Products</p>
+                <p id="amount">{{productCount}}</p>
+            </div>
+            <div class="ptBox">
+                <img id="ptIcon" src="../../../../assets/icons/Dashboard_icons/alt_active.svg" alt="">
+                <p id="title">Listed Products</p>
+                <p id="amount">{{listedProduct.length}}</p>
+            </div>
+            <div class="ptBox" [routerLink]="['/merchant/addProduct']">
+                <img id="ptIcon" src="../../../../assets/icons/Dashboard_icons/alt_new.svg" alt="">
+                <p>New Product</p>
+            </div>
+        </div>
+        <div class="productTab">
+            <p class="ptTitle">All Products</p>
+            <div class="ptGrid">
+                <!-- Loop through to get user products -->
+                <!-- Placeholder data -->
+                <app-product-card *ngFor="let product of products" [Products]="product"></app-product-card>
+            </div>
+        </div>
+    </main>
+</div>

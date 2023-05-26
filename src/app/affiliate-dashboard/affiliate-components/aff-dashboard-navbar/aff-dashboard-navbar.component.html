@@ -1,0 +1,14 @@
+<nav class="dashboard_navbar">
+    <img src="../../../../assets/img/rnco_logo.png" alt="" id="logo">
+    <div class="user_id" [routerLink]="['/affiliate/profile']">
+        <p id="userName">
+            {{currentUser}}
+        </p>
+       
+        <img id="userImage" src="https://picsum.photos/200/300" alt="" srcset="">
+    </div> 
+    
+    <div class="togglesidebar" (click)="toggleSideBar()">
+            <img id="menu_open_icon" src="../../../../assets/icons/menu_open_icon.svg" alt="">
+    </div>
+</nav>

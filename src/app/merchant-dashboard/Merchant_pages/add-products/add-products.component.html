@@ -1,0 +1,164 @@
+<app-dashboard-navbar></app-dashboard-navbar>
+<app-logout *ngIf="isLogOutModalOpen" (hideLogOutModal)="logOutModalToggle($event)"></app-logout>
+<div class="dashboard_container">
+    <app-dashboard-sidebar (showLogOutModal)="logOutModalToggle($event)"></app-dashboard-sidebar>
+    <form class="add_product_container" #form="ngForm" enctype="multipart/form-data">
+        <div class="images-box" *ngIf='true'>
+                <div class="ib-top-row">
+                    <p id="first">Images</p>
+                    <p id="second">(Max 6 Images)</p>
+                </div>
+                <div class="image-row">
+                    <!-- 6 images placeholder initially -->
+                    <div class="emptyImage" *ngIf="ImageUrls.length == 0; else showImages">
+                        <img src="../../../../assets/img/placeholder_img.png" alt="">
+                        <img src="../ ../../../assets/img/placeholder_img.png" alt="">
+                        <img src="../../../../assets/img/placeholder_img.png" alt="">
+                        <img src="../../../../assets/img/placeholder_img.png" alt="">
+                        <img src="../../../../assets/img/placeholder_img.png" alt="">
+                        <img src="../../../../assets/img/placeholder_img.png" alt="">
+                    </div>
+                    <div class="someImages" #showImages>
+                        <div class="imageDiv" *ngFor="let image of ImageUrls">
+                            <img [src]="image" alt="">
+                            <button (click)="deleteImage(image)">
+                                <img src="../../../../assets/icons/delete-black.svg" alt="">
+                                 Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <label for="fileUpload" id="newPhotoBtn">
+                    <img src="../../../../assets/icons/image-add.svg" alt="">
+                    Add New Photo
+                    <input type="file" name=""  id="fileUpload" (change)="uploadImage($event)">
+                    
+                </label>
+            </div>
+            <div  class="product_form" >
+              
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" placeholder="Product Name" name="productName" [(ngModel)]="productName" #prodName="ngModel"/>
+                    <div *ngIf="(prodName.dirty || prodName.touched || form.submitted) && !prodName.valid">
+                        <small *ngIf="prodName.required">Product Name is required</small>
+                    </div>
+                </div>
+          
+               <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select name="category" #cate="ngModel" [(ngModel)]="category">
+                            <option value="TECHNOLOGY">Technology</option>
+                            <option value="FASHION">Fashion</option>
+                            <option value="HEALTH_WELLNESS">Health and Wellness</option>
+                            <option value="FINANCE">Finance</option>
+                            <option value="AUTOMOBILE">Automobile</option>
+                            <option value="REAL_ESTATE">Real Estate</option>
+                            <option value="PERSONAL_DEVELOPMENT">Personal Development</option>
+                            
+                        </select>
+                        <div *ngIf="(cate.dirty || cate.touched || form.submitted) && !cate.valid">
+                            <small *ngIf="cate.required">Product Name is required</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productName">Product Code</label>
+                        <input type="text" placeholder="Product Code" name="productCode" [(ngModel)]="productCode" #prodCode="ngModel"/>
+                        <div *ngIf="(prodCode.dirty || prodCode.touched || form.submitted) && !prodCode.valid">
+                            <small *ngIf="prodCode.required">Product Name is required</small>
+                        </div>
+                    </div>
+               </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productName">Unit Price</label>
+                        <input type="number" min="1" oninput="validity.valid||(value='');" placeholder="Unit Price" name="unitPrice" [(ngModel)]="unitPrice"
+                            #unPrice="ngModel" />
+                        <div *ngIf="(unPrice.dirty || unPrice.touched || form.submitted) && !unPrice.valid">
+                            <small *ngIf="unPrice.required">Product Name is required</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productName">Quantity</label>
+                        <input type="number" min="1" oninput="validity.valid||(value='');" placeholder="Quantity" name="quantity" [(ngModel)]="quantity" #quan="ngModel"/>
+                        <div *ngIf="(quan.dirty || quan.touched || form.submitted) && !quan.valid">
+                            <small *ngIf="quan.required">Product Name is required</small>
+                        </div>
+                    </div>
+                
+                </div>
+               <div class="form-row">
+                <div class="form-group">
+                    <label>Delivery Period</label>
+                    <div class="form-child">
+                        <select name="deliveryPeriod" [(ngModel)]="deliveryPeriod" #dPeriod="ngModel">
+                            <option value="DAY">Day</option>
+                            <option value="WEEK">Week</option>
+                            <option value="MONTH">Month</option>
+                        </select>
+                        <input type="number" min="1" name="duration" placeholder="Duration" [(ngModel)]="duration" #dDuration="ngModel" />
+
+                    </div>
+                    <div *ngIf="(dDuration.dirty || dDuration.touched || form.submitted) && !dDuration.valid">
+                        <small *ngIf="dDuration.required">Delivery duration is required</small>
+                    </div>
+                    <div *ngIf="(dPeriod.dirty || dPeriod.touched || form.submitted) && !dPeriod.valid">
+                        <small *ngIf="dPeriod.required">Delivery Period is required</small>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="commission">Commission Type</label>
+                    <div class="form-child">
+                        <select name="conversionType" #commission="ngModel" [(ngModel)]="conversionType" id="conversionType">
+                            <option value="PERCENT">Percentage</option>
+                            <option value="AMOUNT">Amount</option>
+                        </select>
+                        <input type="number" min="1" name="rate" id="rate" [(ngModel)]="rate" #rates="ngModel" (blur)="checkRate()" placeholder="Rate or Amount"   />
+
+                    </div>
+                   
+                    <div *ngIf="(commission.dirty || commission.touched || form.submitted) && !commission.valid">
+                        <small *ngIf="commission.required">Conversion Type cannot be empty</small>
+                    </div>
+                    <div *ngIf="(rates.dirty || rates.touched || form.submitted) && !rates.valid">
+                        <small *ngIf="rates.required">Rate cannot be empty</small>
+                    </div>
+                </div>
+               </div>
+               
+
+                <div class="form-group">
+                    <label for="description">Product Description</label>
+                    <textarea name="desc" [(ngModel)]="desc" maxlength="500"></textarea>
+                </div>
+               
+
+                <div class="form-group">
+                    <label for="options">Delivery Options</label>
+                    <div class="radio-form">
+                        <div class="radio-group">
+                            
+                            <input type="radio" name="options" [(ngModel)]="options" value="PICK_UP" #opt="ngModel"/>
+                            Pick Up
+                        </div>
+                        <div class="radio-group">
+                            
+                            <input type="radio" name="options" [(ngModel)]="options" value="DOOR_DELIVERY" #opt="ngModel"/>
+                            Door Delivery
+                        </div>
+                    </div>
+                      <small *ngIf="(opt.dirty || opt.touched || form.submitted) && !opt.valid">
+                        <small *ngIf="opt.required">Select from the above option</small>
+                    </small>
+                </div>
+                    <button type="submit" id="submitButton" (click)="submitform()">Save</button>
+
+            </div>
+               
+               
+           
+
+    </form>
+</div>

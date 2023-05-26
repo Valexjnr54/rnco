@@ -1,0 +1,65 @@
+<div class="personalDetails">
+    <div class="pdtopper">
+        <p>Personal Information</p>
+    </div>
+    <form (ngSubmit)="validateForm('second_step')"  #form="ngForm">
+        <div class="formGroup">
+            <label for="firstName">First Name</label>
+            <input type="text" [(ngModel)]="firstName" #fname="ngModel" name="firstName" id="firstName" placeholder="Enter first Name" required>
+            <small *ngIf="(fname.dirty || fname.touched || form.submitted) && !fname.valid">
+                <small *ngIf="fname.required">First Name field is required</small>
+            </small>
+        </div>
+        <div class="formGroup">
+            <label for="lastName">Last Name</label>
+            <input type="text" [(ngModel)]="lastName" #lname="ngModel" name="lastName" id="lastName" placeholder="Enter Last Name" required>
+            <small *ngIf="(lname.dirty || lname.touched || form.submitted) && !lname.valid">
+                <small *ngIf="lname.required">Last Name field is required</small>
+            </small>
+        </div>
+        <div class="formGroup">
+            <label for="middleName">Middle Name(Optional)</label>
+            <input type="text" [(ngModel)]="middleName"  name="middleName" id="middleName" placeholder="Enter Middle Name">
+            
+        </div>
+        <div class="formGroup">
+            <label for="username">Username</label>
+            <input type="text" name="username" [(ngModel)]="login" #username="ngModel" id="username" placeholder="@yourname" required>
+            <small *ngIf="(username.dirty || username.touched || form.submitted) && !username.valid">
+                <small *ngIf="username.required">Username field is required</small>
+            </small>
+        </div>
+          
+        <div class="formGroup">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" (blur)="checkEmail()" [(ngModel)]="email" #emailadd="ngModel" pattern="[^ @]*@[^ @]*"  id="email" placeholder="yourname@email.com" required>
+           <small *ngIf="validEmail == false">&#33; This is not a valid email address</small>
+           <small *ngIf="(emailadd.dirty || emailadd.touched || form.submitted) && !emailadd.valid">
+               <small *ngIf="emailadd.required">Email Address is required</small>
+                <small *ngIf="address.errors.pattern">Email must contain at least the @ character</small>
+           </small>
+            
+        </div>
+        <div class="formGroup phoneFg">
+            <label for="phonenumber">Phone Number</label>
+            <div>
+                <input type="text" value="+234" disabled>
+            
+            <input type="text" name="phoneNumber" [(ngModel)]="phoneNumber" #phone="ngModel"  id="phoneNumber" placeholder="08015379315" required>
+            </div>
+            <small *ngIf="(phone.dirty || phone.touched || form.submitted) && !affPersons.controls.phoneNumber.valid">
+                <small *ngIf="phone.required">Phone number is required</small>
+            </small>
+        </div>
+        <div class="formGroup">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dateOfBirth" id="dateOfBirth" #dates="ngModel" [(ngModel)]="dateOfBirth" required>
+               <small *ngIf="(dates.dirty || dates.touched || form.submitted) && !dates.valid">
+                 <small *ngIf="dates.required">Date of Birth is required</small>
+            </small>
+        </div>
+        <div class="formWholeLength">
+            <button type="submit">Continue</button>
+        </div>
+    </form>
+</div>

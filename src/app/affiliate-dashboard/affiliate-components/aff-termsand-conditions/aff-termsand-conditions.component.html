@@ -1,0 +1,32 @@
+<div class="affReg-pay" [formGroup]="affTerms">
+    <div class="reg-content">
+       
+        <div class="rp_con">
+            <p id="title">Terms and conditions</p>
+            <p class="terms">
+                The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. 
+                Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for
+                your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions 
+                document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and 
+                Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the 
+                Terms and Conditions document for your perusal. Read it biko. The following “blah-blah-blah” is the the Terms and Conditions document for your perusal. Read it biko.
+            </p>
+            <div class="form-group">
+                <input type="checkbox" name="accept" id="" formControlName="cansubmit" class="accept" [(ngModel)]="!cansubmit">
+                <label for="accept">Accept</label>
+            <small *ngIf="(affTerms.controls.cansubmit.touched) && !affTerms.controls.cansubmit.valid">
+                Check the box to continue
+            </small>
+
+            </div>
+            <button 
+            (click)="submit()"
+            class="final" 
+            > Continue </button>
+        </div>
+    </div> 
+
+   
+</div>
+
+
